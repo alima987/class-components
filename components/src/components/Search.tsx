@@ -1,9 +1,9 @@
 import { Component } from "react";
 
 export default class Search extends Component {
-    state = {
-        value: ''
-    }
+    
+    state = { value: '' };
+
     handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({
            value: e.target.value
