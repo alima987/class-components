@@ -1,15 +1,16 @@
-import {Component } from "react";
+import React, {Component } from "react";
 interface Props {
     onSearch:(query: string) => void
 }
 export default class Search extends Component<Props> {
-    
     state = { value: '' };
+
     handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({
            value: e.target.value
         })
     }
+
     handleSearch = () => {
         const { onSearch } = this.props;
         const { value } = this.state;
@@ -24,7 +25,7 @@ export default class Search extends Component<Props> {
                onChange={this.handleChange}
                placeholder="type..."
                />
-             <button >Search</button>
+             <button onClick={this.handleSearch}>Search</button>
              </div>
         )
     }
