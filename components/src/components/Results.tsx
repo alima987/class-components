@@ -1,5 +1,7 @@
 import React from "react";
 import Search from "./Search";
+import ErrorBtn from "./ErrorBtn";
+import ErrorBoundary from "./ErrorBoundary";
 export interface MoviesData {
     id: string,
     overview: string,
@@ -38,11 +40,18 @@ export default class Results extends React.Component {
         const filtered = moviesData.filter((el: MoviesData) => el.title.toLowerCase().includes(term.toLowerCase()))
         this.setState({filteredMovies: filtered})
     }
+    resetBtn = (): void => {
+        localStorage.clear()
+        this.setState({term: '', filteredMovies: this.state.moviesData})
+    }
     render() {
         const {filteredMovies} = this.state
         return (
+            <ErrorBoundary>
             <div>
                 <Search onSearch={this.handleSearch}/>
+                <ErrorBtn />
+                <button onClick={this.resetBtn}>Clear search</button>
                 <h2>Movies</h2>
                 {filteredMovies.map((movie: MoviesData) => (
                  <div key={movie.id}>
@@ -53,6 +62,7 @@ export default class Results extends React.Component {
                  </div>
                 ))}
             </div>
+            </ErrorBoundary>
         )
     }
 }
