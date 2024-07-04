@@ -1,32 +1,27 @@
-import React, {Component } from "react";
+import React, { useState } from "react";
 interface Props {
     onSearch:(query: string) => void
 }
-export default class Search extends Component<Props> {
-    state = { value: '' };
+ const Search = ({onSearch}: Props) => {
+    const [value, setValue] = useState('')
 
-    handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-           value: e.target.value
-        })
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(e.target.value)
     }
 
-    handleSearch = () => {
-        const { onSearch } = this.props;
-        const { value } = this.state;
+    const handleSearch = () => {
         onSearch(value);
     }
-    render() {
         return (
              <div>
                <input 
                type="search"
-               value={this.state.value}
-               onChange={this.handleChange}
+               value={value}
+               onChange={handleChange}
                placeholder="type..."
                />
-             <button onClick={this.handleSearch}>Search</button>
+             <button onClick={handleSearch}>Search</button>
              </div>
         )
     }
-}
+export default Search

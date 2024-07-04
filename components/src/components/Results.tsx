@@ -1,68 +1,65 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Search from "./Search";
 import ErrorBtn from "./ErrorBtn";
 import ErrorBoundary from "./ErrorBoundary";
-export interface MoviesData {
+export type MoviesData = {
     id: string,
     overview: string,
-    popularity: number,
+    vote_average: number,
     poster_path: string,
     title: string,
     }
-export default class Results extends React.Component {
+const Results = () => {
 
-    state = {
-        moviesData: [], 
-        term: '', 
-        filteredMovies: []
-    }
+    const [moviesData, setMoviesData] = React.useState<MoviesData[]>([])
+    const [term, setTerm] = useState('')
+    //const [filteredMovies, setFilteredMovies] = useState([])
 
-    handleSearch = (query: string) => {
-        this.setState({term: query}, () => {
-            this.filteredMovies()
-            localStorage.setItem('search', JSON.stringify(query))
-    })
+    const handleSearch = (query: string) => {
+        setTerm(query)
+        localStorage.setItem('search', JSON.stringify(query))
     }
-    componentDidMount(): void {
+    useEffect(() => {
+        fetchData()  
         const data = localStorage.getItem('search')
         const term = data ? JSON.parse(data) : ''
-        this.setState({term}, () => {
-            this.fetchData()
-        })
-    }
-    fetchData = async() => {
-        const res = await fetch('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5')
+        setTerm(term)      
+    }, [])
+    const fetchData = async() => {
+        try {
+        const res = await fetch('https://api.themoviedb.org/3/movie/top_rated?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=1')
         const jsonRes = await res.json()
-        this.setState({moviesData: jsonRes.results}, this.filteredMovies)
+        setMoviesData(jsonRes.results)
+        } catch(error) {
+            throw new Error
+        }
     }
-    filteredMovies = () => {
-        const {moviesData, term} = this.state
-        const filtered = moviesData.filter((el: MoviesData) => el.title.toLowerCase().includes(term.toLowerCase()))
-        this.setState({filteredMovies: filtered})
-    }
-    resetBtn = (): void => {
+    const filterMovies = moviesData.filter((el) => el.title.toLowerCase().includes(term.toLowerCase()))
+        
+    const resetBtn = (): void => {
         localStorage.clear()
-        this.setState({term: '', filteredMovies: this.state.moviesData})
+        setTerm('')
     }
-    render() {
-        const {filteredMovies} = this.state
         return (
             <ErrorBoundary>
             <div>
-                <Search onSearch={this.handleSearch}/>
+                <Search onSearch={handleSearch}/>
                 <ErrorBtn />
-                <button onClick={this.resetBtn}>Clear search</button>
+                <button onClick={resetBtn}>Clear search</button>
                 <h2>Movies</h2>
-                {filteredMovies.map((movie: MoviesData) => (
+                <div className="movies_container">
+                {filterMovies.map((movie: MoviesData) => (
                  <div key={movie.id}>
                     <h2>{movie.title}</h2>
                     <img src= {`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
                     <p>{movie.overview}</p>
-                    <p>{movie.popularity}</p>
+                    <p>{movie.vote_average}/10</p>
                  </div>
                 ))}
+                </div>
             </div>
             </ErrorBoundary>
         )
     }
-}
+
+    export default Results
