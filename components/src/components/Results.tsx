@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import Search from "./Search";
 import ErrorBtn from "./ErrorBtn";
 import ErrorBoundary from "./ErrorBoundary";
+import NowPlaying from "./NowPlaying/NowPlaying";
+import Upcoming from "./Upcoming/Upcoming";
+import Popular from "./Popular/Popular";
 export type MoviesData = {
     id: string,
     overview: string,
@@ -13,19 +16,18 @@ const Results = () => {
 
     const [moviesData, setMoviesData] = React.useState<MoviesData[]>([])
     const [term, setTerm] = useState('')
-    //const [filteredMovies, setFilteredMovies] = useState([])
 
     const handleSearch = (query: string) => {
         setTerm(query)
         localStorage.setItem('search', JSON.stringify(query))
     }
     useEffect(() => {
-        fetchData()  
+        fetchTopRated()  
         const data = localStorage.getItem('search')
         const term = data ? JSON.parse(data) : ''
         setTerm(term)      
     }, [])
-    const fetchData = async() => {
+    const fetchTopRated = async() => {
         try {
         const res = await fetch('https://api.themoviedb.org/3/movie/top_rated?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=1')
         const jsonRes = await res.json()
@@ -42,20 +44,24 @@ const Results = () => {
     }
         return (
             <ErrorBoundary>
-            <div>
+            <div className='movie-app'>
                 <Search onSearch={handleSearch}/>
                 <ErrorBtn />
                 <button onClick={resetBtn}>Clear search</button>
-                <h2>Movies</h2>
                 <div className="movies_container">
-                {filterMovies.map((movie: MoviesData) => (
+                <NowPlaying />
+                <Upcoming />
+                <h2>Top-Rated</h2>
+                    <div className="top-rated">
+                    {filterMovies.map((movie: MoviesData) => (
                  <div key={movie.id}>
-                    <h2>{movie.title}</h2>
                     <img src= {`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
-                    <p>{movie.overview}</p>
-                    <p>{movie.vote_average}/10</p>
+                    <h2>{movie.title}</h2>
+                    <p>{movie.vote_average}</p>
                  </div>
                 ))}
+                    </div>
+                <Popular />
                 </div>
             </div>
             </ErrorBoundary>

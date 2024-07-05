@@ -1,0 +1,5 @@
+.upcom_cont > .upcom_list {
+	overflow-x: auto;
+    display: flex;
+	flex-wrap: nowrap;
+}
