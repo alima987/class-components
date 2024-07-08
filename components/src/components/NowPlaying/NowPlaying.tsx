@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import './NowPlaying.css'
+import { useDispatch, useSelector } from "react-redux"
+import { RootState } from "../../redux/store"
 export type NowPlayData = {
     id: string,
     overview: string,
@@ -8,12 +10,16 @@ export type NowPlayData = {
     title: string,
     }
 const NowPlaying = () => {
-const [nowPlay, setNowPlay] = useState<NowPlayData[]>([])
+const {id, overview, vote_average, title, poster_path} = useSelector((state: RootState) => state.movie)
+const dispatch = useDispatch()
+    
+//const [nowPlay, setNowPlay] = useState<NowPlayData[]>([])
 const fetchNowPlaying = async() => {
     try {
     const res = await fetch('https://api.themoviedb.org/3/movie/now_playing?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=1')
-    const jsonRes = await res.json()
-    setNowPlay(jsonRes.results)
+    const data = await res.json()
+
+    //setNowPlay(jsonRes.results)
     } catch(error) {
         throw new Error
     }

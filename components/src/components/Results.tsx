@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Search from "./Search";
 import ErrorBtn from "./ErrorBtn";
 import ErrorBoundary from "./ErrorBoundary";
@@ -8,6 +8,7 @@ import Popular from "./Popular/Popular";
 import TopRated from "./TopRated/TopRated";
 import Genres from "./Genres/Genres";
 const Results = () => {
+    
     const [term, setTerm] = useState('')
 
     const handleSearch = (query: string) => {
