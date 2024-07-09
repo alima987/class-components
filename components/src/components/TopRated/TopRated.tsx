@@ -11,6 +11,8 @@ const fetchTopRated = async() => {
     const res = await fetch('https://api.themoviedb.org/3/movie/top_rated?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=1')
     const jsonRes = await res.json()
     dispatch(setMovie(jsonRes.results))
+    console.log(jsonRes.results)
+    console.log(dispatch(setMovie(jsonRes.results)))
     } catch(error) {
         console.error("Failed to fetch now playing movies:", error);
     }
