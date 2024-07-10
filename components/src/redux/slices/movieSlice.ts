@@ -8,20 +8,35 @@ export interface MovieData {
     title: string,
     }
     export interface MovieState {
-      data: MovieData[], 
+    nowPlaying: MovieData[], 
+    popular: MovieData[],
+    topRated: MovieData[],
+    upcoming: MovieData[]
   }
   const initialState: MovieState = {
-      data: [],
+    nowPlaying: [],
+    popular: [],
+    topRated: [],
+    upcoming: [],
   }
 
 export const movieSlice = createSlice({
     name: 'movies',
     initialState,
     reducers: {
-      setMovie: (state, action: PayloadAction<MovieData[]>) => {
-       state.data = action.payload
+      setNowPlaying: (state, action: PayloadAction<MovieData[]>) => {
+        state.nowPlaying = action.payload
+      },
+      setPopular: (state, action: PayloadAction<MovieData[]>) => {
+        state.popular = action.payload
+      },
+      setTopRated: (state, action: PayloadAction<MovieData[]>) => {
+        state.topRated = action.payload
+      },
+      setUpcoming: (state, action: PayloadAction<MovieData[]>) => {
+       state.upcoming = action.payload
       },
     }
 })
-export const { setMovie } = movieSlice.actions
+export const { setNowPlaying, setPopular, setTopRated, setUpcoming } = movieSlice.actions
 export default movieSlice.reducer

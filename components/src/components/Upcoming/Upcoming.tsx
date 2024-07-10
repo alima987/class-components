@@ -2,15 +2,15 @@ import { useEffect} from "react"
 import './Upcoming.css'
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { setMovie } from "../../redux/slices/movieSlice";
+import { setUpcoming } from "../../redux/slices/movieSlice";
 const Upcoming = () => {
-const movies = useSelector((state: RootState) => state.movies.data); 
+const movies = useSelector((state: RootState) => state.movies.upcoming); 
 const dispatch = useDispatch()
 const fetchUpcoming = async() => {
     try {
     const res = await fetch('https://api.themoviedb.org/3/movie/upcoming?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=1')
     const jsonRes = await res.json()
-    dispatch(setMovie(jsonRes.results))
+    dispatch(setUpcoming(jsonRes.results))
     } catch(error) {
         console.error("Failed to fetch now playing movies:", error);
     }

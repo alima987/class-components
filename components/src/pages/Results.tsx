@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
-import Search from "./Search";
-import ErrorBtn from "./ErrorBtn";
-import ErrorBoundary from "./ErrorBoundary";
-import NowPlaying from "./NowPlaying/NowPlaying";
-import Upcoming from "./Upcoming/Upcoming";
-import Popular from "./Popular/Popular";
-import TopRated from "./TopRated/TopRated";
-import Genres from "./Genres/Genres";
+import Search from "../components/Search";
+import ErrorBtn from "../components/ErrorBtn";
+import ErrorBoundary from "../components/ErrorBoundary";
+import NowPlaying from "../components/NowPlaying/NowPlaying";
+import Upcoming from "../components/Upcoming/Upcoming";
+import Popular from "../components/Popular/Popular";
+import TopRated from "../components/TopRated/TopRated";
+import Genres from "../components/Genres/Genres";
 const Results = () => {
     
     const [term, setTerm] = useState('')
+    const [activeGenre, setActiveGenre] = useState(28)
 
     const handleSearch = (query: string) => {
         setTerm(query)
@@ -34,9 +35,7 @@ const Results = () => {
                 <ErrorBtn />
                 <button onClick={resetBtn}>Clear search</button>
                 <div className="movies_container">
-                <div className="genres">
-                    <Genres />
-                </div>
+                <Genres />
                 <div className="movies">
                 <NowPlaying />
                 <Upcoming />
