@@ -6,8 +6,8 @@ import NowPlaying from "../components/NowPlaying/NowPlaying";
 import Upcoming from "../components/Upcoming/Upcoming";
 import Popular from "../components/Popular/Popular";
 import TopRated from "../components/TopRated/TopRated";
-import Genres from "../components/Genres/Genres";
-const Results = () => {
+import Genres from "../components/Genres/MovieGenres";
+const Main = () => {
     
     const [term, setTerm] = useState('')
     const [activeGenre, setActiveGenre] = useState(28)
@@ -35,7 +35,6 @@ const Results = () => {
                 <ErrorBtn />
                 <button onClick={resetBtn}>Clear search</button>
                 <div className="movies_container">
-                <Genres />
                 <div className="movies">
                 <NowPlaying />
                 <Upcoming />
@@ -48,4 +47,4 @@ const Results = () => {
         )
     }
 
-    export default Results
+    export default Main

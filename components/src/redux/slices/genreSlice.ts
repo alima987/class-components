@@ -4,20 +4,25 @@ export interface GenreData {
     name: string
 }
 export interface GenreState {
-    genre: GenreData[]
+    movieGenre: GenreData[]
+    tvGenres: GenreData[]
 }
 const initialState: GenreState = {
-    genre: []
+    movieGenre: [],
+    tvGenres: []
 }
 export const genreSlice = createSlice({
     name: 'genres',
     initialState,
     reducers: {
-       setGenre: (state, action: PayloadAction<GenreData[]>) => {
-          state.genre = action.payload
+       setMovieGenre: (state, action: PayloadAction<GenreData[]>) => {
+          state.movieGenre= action.payload
+       },
+       setTVGenres: (state, action: PayloadAction<GenreData[]>) => {
+         state.tvGenres = action.payload
        }
     }
 })
 
-export const { setGenre } = genreSlice.actions
+export const { setMovieGenre, setTVGenres } = genreSlice.actions
 export default genreSlice.reducer
