@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../../redux/store"
 import { setMovieGenre } from "../../redux/slices/genreSlice"
+import { useFetchMovieGenreQuery } from "../../services/genreApi";
 interface Props {
     activeGenre: number;
     setActiveGenre: (genre: number) => void;
@@ -11,19 +12,15 @@ interface Props {
 const Genres = ({ activeGenre, setActiveGenre, page, setPage }: Props) => {
     const genres = useSelector((state: RootState) => state.genres.movieGenre); 
     const dispatch = useDispatch()
-    const fetchGenres = async() => {
-        try {
-        const res = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=51ca1e241e720d72e2bb92a4b36859f5&&language=en-US`)
-        const jsonRes = await res.json()
-        dispatch(setMovieGenre(jsonRes.genres))
-        } catch(error) {
-            console.error("Failed to fetch now playing movies:", error);
-        }
-    }
+    const { data, error, isLoading } = useFetchMovieGenreQuery({})
     useEffect(() => {
-        fetchGenres()   
-    }, [])
+        if(data) {
+            dispatch(setMovieGenre(data.genres))
+        }
+    }, [data, dispatch])
     
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Failed to load movie genres.</div>;
 
 return (
     <div className="genres_container">

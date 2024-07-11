@@ -5,13 +5,13 @@ export const tvApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.themoviedb.org/3/' }),
   endpoints: (builder) => ({
     fetchAiringToday: builder.query({
-      query: () => 'https://api.themoviedb.org/3/tv/airing_today?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=1',
+      query: () => 'tv/airing_today?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=1',
     }),
     fetchTopRatedTV: builder.query({
-      query: () => 'https://api.themoviedb.org/3/tv/top_rated?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=1',
+      query: () => 'tv/top_rated?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=1',
       }),
     fetchTVShows: builder.query({
-      query: ({tvGenreId, page}: {tvGenreId: number, page: number}) => `https://api.themoviedb.org/3/discover/tv?with_genres=${tvGenreId}&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=${page}`,
+      query: ({tvGenreId, page}: {tvGenreId: number, page: number}) => `discover/tv?with_genres=${tvGenreId}&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=${page}`,
     }),
   }),
 });
