@@ -7,7 +7,7 @@ import { useFetchTopRatedQuery } from '../../services/movieApi'
 const TopRated = () => {
 const movies = useSelector((state: RootState) => state.movies.topRated); 
 const dispatch = useDispatch()
-const { data, error, isLoading } = useFetchTopRatedQuery()
+const { data, error, isLoading } = useFetchTopRatedQuery({})
 /*const fetchTopRated = async() => {
     try {
     const res = await fetch('https://api.themoviedb.org/3/movie/top_rated?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=1')
@@ -20,7 +20,7 @@ const { data, error, isLoading } = useFetchTopRatedQuery()
 useEffect(() => {
     if(data) {
         dispatch(setTopRated(data.results))
-    }
+    } 
     //fetchTopRated()    
 }, [data, dispatch])
 if (isLoading) return <div>Loading...</div>;

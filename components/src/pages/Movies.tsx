@@ -23,12 +23,14 @@ const Movies = () => {
     useEffect(() => {
         if(data) {
             dispatch(setPopular(data.results))
+        } else {
+            console.error("Failed to fetch movies:", error)
         }
         //fetchMovies()    
     }, [activeGenre, page, data, dispatch])
 
 if (isLoading) return <div>Loading...</div>;
-if (error) return <div>Failed to load now playing movies.</div>;
+if (error) return <div>Failed to load movies.</div>;
 
 return (
     <div>

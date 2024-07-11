@@ -8,7 +8,7 @@ import { useFetchNowPlayingQuery } from "../../services/movieApi";
 const NowPlaying = () => {
 const movies = useSelector((state: RootState) => state.movies.nowPlaying); 
 const dispatch = useDispatch()
-const { data, error, isLoading } = useFetchNowPlayingQuery();
+const { data, error, isLoading } = useFetchNowPlayingQuery({});
     
 /*const fetchNowPlaying = async() => {
     try {
@@ -22,7 +22,7 @@ const { data, error, isLoading } = useFetchNowPlayingQuery();
 useEffect(() => {
     if(data) {
         dispatch(setNowPlaying(data.results))
-    }
+    } 
     //fetchNowPlaying()    
 }, [data, dispatch])
 if (isLoading) return <div>Loading...</div>;
