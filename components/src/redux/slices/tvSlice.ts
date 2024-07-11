@@ -8,9 +8,13 @@ export interface TVData {
     }
     export interface TVState {
     tvs: TVData[], 
+    AiringToday: TVData[],
+    TopRatedTv: TVData[],
   }
   const initialState: TVState = {
     tvs: [],
+    AiringToday: [],
+    TopRatedTv: []
   }
 
 export const tvSlice = createSlice({
@@ -19,8 +23,14 @@ export const tvSlice = createSlice({
     reducers: {
      setTV: (state, action: PayloadAction<TVData[]>) => {
        state.tvs = action.payload
+     },
+     setAiringToday: (state, action: PayloadAction<TVData[]>) => {
+      state.AiringToday = action.payload
+     },
+     setTopRatedTv: (state, action: PayloadAction<TVData[]>) => {
+      state.TopRatedTv = action.payload
      }
     }
 })
-export const { setTV } = tvSlice.actions
+export const { setTV, setAiringToday, setTopRatedTv } = tvSlice.actions
 export default tvSlice.reducer

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { setPopular } from "../redux/slices/movieSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
@@ -20,7 +20,7 @@ const Movies = () => {
     }
     useEffect(() => {
         fetchMovies()    
-    }, [])
+    }, [activeGenre, page])
 return (
     <div>
         <h2>Movies</h2>

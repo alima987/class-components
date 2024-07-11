@@ -1,14 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
+import React, { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { useEffect } from "react";
 import { setTVGenres } from "../../redux/slices/genreSlice";
 interface Props {
-    activeGenre: number;
-    setActiveGenre: (genre: number) => void;
+    activeTVGenre: number;
+    setActiveTVGenre: (genre: number) => void;
     page: number;
     setPage: (page: number) => void; 
 }
-const TVGenres = ({ activeGenre, setActiveGenre, page, setPage }: Props) => {
+const TVGenres = ({ activeTVGenre, setActiveTVGenre, page, setPage }: Props) => {
     const genres = useSelector((state: RootState) => state.genres.tvGenres); 
     const dispatch = useDispatch()
 
@@ -23,7 +23,7 @@ const TVGenres = ({ activeGenre, setActiveGenre, page, setPage }: Props) => {
     }
     useEffect(() => {
         fetchTVGenres()   
-    }, [activeGenre, page])
+    }, [])
 return (
     <div>
       <h2>TV Genres</h2>
@@ -31,7 +31,7 @@ return (
         {genres.map((genre) => (
             <div key={genre.id}>
             <button
-            onClick={() => setActiveGenre(genre.id)}>
+            onClick={() => setActiveTVGenre(genre.id)}>
                 {genre.name}
             </button>
         </div>

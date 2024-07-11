@@ -1,8 +1,7 @@
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../../redux/store"
 import { setMovieGenre } from "../../redux/slices/genreSlice"
-import { setPopular } from "../../redux/slices/movieSlice";
 interface Props {
     activeGenre: number;
     setActiveGenre: (genre: number) => void;
@@ -23,7 +22,7 @@ const Genres = ({ activeGenre, setActiveGenre, page, setPage }: Props) => {
     }
     useEffect(() => {
         fetchGenres()   
-    }, [activeGenre, page])
+    }, [])
     
 
 return (

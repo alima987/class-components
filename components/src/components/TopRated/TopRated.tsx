@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import './TopRated.css'
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
@@ -20,7 +20,7 @@ useEffect(() => {
 }, [])
 return (
     <div className="top_cont">
-        <h2>Top Rated</h2>
+        <h2>Top Rated Movies</h2>
         <div className="toprated_list">
         {movies.map((el) => (
             <div key={el.id}>

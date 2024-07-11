@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Search from "../components/Search";
 import ErrorBtn from "../components/ErrorBtn";
 import ErrorBoundary from "../components/ErrorBoundary";
 import NowPlaying from "../components/NowPlaying/NowPlaying";
-import Upcoming from "../components/Upcoming/Upcoming";
-import Popular from "../components/Popular/Popular";
 import TopRated from "../components/TopRated/TopRated";
-import Genres from "../components/Genres/MovieGenres";
+import AiringToday from "../components/AiringToday/AiringToday";
+import TopRatedTv from "../components/TopRatedTv/TopRatedTv";
 const Main = () => {
     
     const [term, setTerm] = useState('')
-    const [activeGenre, setActiveGenre] = useState(28)
 
     const handleSearch = (query: string) => {
         setTerm(query)
@@ -37,9 +35,9 @@ const Main = () => {
                 <div className="movies_container">
                 <div className="movies">
                 <NowPlaying />
-                <Upcoming />
                 <TopRated />
-                <Popular />
+                <AiringToday />
+                <TopRatedTv />
                 </div>
                 </div>
             </div>

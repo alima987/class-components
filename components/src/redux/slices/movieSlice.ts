@@ -11,13 +11,11 @@ export interface MovieData {
     nowPlaying: MovieData[], 
     popular: MovieData[],
     topRated: MovieData[],
-    upcoming: MovieData[]
   }
   const initialState: MovieState = {
     nowPlaying: [],
     popular: [],
     topRated: [],
-    upcoming: [],
   }
 
 export const movieSlice = createSlice({
@@ -33,10 +31,7 @@ export const movieSlice = createSlice({
       setTopRated: (state, action: PayloadAction<MovieData[]>) => {
         state.topRated = action.payload
       },
-      setUpcoming: (state, action: PayloadAction<MovieData[]>) => {
-       state.upcoming = action.payload
-      },
     }
 })
-export const { setNowPlaying, setPopular, setTopRated, setUpcoming } = movieSlice.actions
+export const { setNowPlaying, setPopular, setTopRated } = movieSlice.actions
 export default movieSlice.reducer
