@@ -4,30 +4,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import Genres from "../components/Genres/MovieGenres";
 import { useFetchPopularQuery } from '../services/movieApi'
+import { setLoding } from "../redux/slices/lodingSlice";
 
 const Movies = () => {
     const [activeGenre, setActiveGenre] = useState(28)
     const [page, setPage] = useState(1)
     const movies = useSelector((state: RootState) => state.movies.popular);  
+    const isLoading = useSelector((state: RootState) => state.loading.isLoading)
     const dispatch = useDispatch()
-    const { data, error, isLoading } = useFetchPopularQuery({genreId: activeGenre, page})
-    /*const fetchMovies = async() => {
-        try {
-            const movieDatas = await fetch(`https://api.themoviedb.org/3/discover/movie?with_genres=${activeGenre}&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=${page}`);
-            const jsonData = await movieDatas.json();
-            dispatch(setPopular(jsonData.results));
-        } catch (error) {
-            console.error("Failed to fetch movies by genre:", error);
-        }
-    }*/
+    const { data, error, isLoading: queryIsLoading } = useFetchPopularQuery({genreId: activeGenre, page})
+    
     useEffect(() => {
+        dispatch(setLoding(queryIsLoading))
         if(data) {
             dispatch(setPopular(data.results))
         } else {
             console.error("Failed to fetch movies:", error)
-        }
-        //fetchMovies()    
-    }, [activeGenre, page, data, dispatch])
+        }  
+    }, [activeGenre, page, data, queryIsLoading, dispatch])
 
 if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Failed to load movies.</div>;

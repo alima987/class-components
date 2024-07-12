@@ -6,9 +6,9 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Header from "./components/Header";
 import Movies from "./pages/Movies";
 import TVShows from "./pages/TVShow";
+//import { MovieProvider } from "./context/movieContext";
 
-export default class App extends React.Component {
-  render() {
+const App = () => {
     return (
       <ErrorBoundary>
         <Router>
@@ -22,5 +22,4 @@ export default class App extends React.Component {
       </ErrorBoundary>
     )
   }
-}
-
+export default App 

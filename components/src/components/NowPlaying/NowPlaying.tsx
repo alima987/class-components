@@ -4,27 +4,20 @@ import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../../redux/store"
 import { MovieData, setNowPlaying} from "../../redux/slices/movieSlice";
 import { useFetchNowPlayingQuery } from "../../services/movieApi"; 
+import { setLoding } from "../../redux/slices/lodingSlice";
 
 const NowPlaying = () => {
 const movies = useSelector((state: RootState) => state.movies.nowPlaying); 
+const isLoading = useSelector((state: RootState) => state.loading.isLoading)
 const dispatch = useDispatch()
-const { data, error, isLoading } = useFetchNowPlayingQuery({});
+const { data, error, isLoading: queryIsLoading } = useFetchNowPlayingQuery({});
     
-/*const fetchNowPlaying = async() => {
-    try {
-    const res = await fetch('https://api.themoviedb.org/3/movie/now_playing?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=1')
-    const data = await res.json()
-    dispatch(setNowPlaying(data.results))
-    } catch(error) {
-        console.error("Failed to fetch now playing movies:", error);
-    }
-}*/
 useEffect(() => {
+    dispatch(setLoding(queryIsLoading))
     if(data) {
         dispatch(setNowPlaying(data.results))
     } 
-    //fetchNowPlaying()    
-}, [data, dispatch])
+}, [data, queryIsLoading, dispatch])
 if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Failed to load now playing movies.</div>;
 return (

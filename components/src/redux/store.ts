@@ -5,6 +5,7 @@ import TVReducer from './slices/tvSlice';
 import { movieApi } from '../services/movieApi'
 import { tvApi } from "../services/tvApi";
 import { genreApi } from "../services/genreApi";
+import LoadingReducer from "./slices/lodingSlice";
 
 export const store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
       movies: MovieReducer,
       genres: GenreReducer,
       tvs: TVReducer,
+      loading: LoadingReducer
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(movieApi.middleware, tvApi.middleware, genreApi.middleware)

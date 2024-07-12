@@ -4,28 +4,22 @@ import { RootState } from "../redux/store";
 import { setTV } from "../redux/slices/tvSlice";
 import TVGenres from "../components/Genres/TVGenres";
 import { useFetchTVShowsQuery } from "../services/tvApi";
+import { setLoding } from "../redux/slices/lodingSlice";
 
 const TVShows = () => {
     const [activeTVGenre, setActiveTVGenre] = useState(10759)
     const [page, setPage] = useState(1)
     const tvs = useSelector((state: RootState) => state.tvs.tvs);  
+    const isLoading = useSelector((state: RootState) => state.loading.isLoading)
     const dispatch = useDispatch()
-    const { data, error, isLoading } = useFetchTVShowsQuery({tvGenreId: activeTVGenre, page})
-    /*const fetchTVShows = async() => {
-        try {
-            const tvDatas = await fetch(`https://api.themoviedb.org/3/discover/tv?with_genres=${activeTVGenre}&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=${page}`);
-            const jsonData = await tvDatas.json();
-            dispatch(setTV(jsonData.results));
-        } catch (error) {
-            console.error("Failed to fetch movies by genre:", error);
-        }
-    }*/
+    const { data, error, isLoading: queryIsLoading } = useFetchTVShowsQuery({tvGenreId: activeTVGenre, page})
+
     useEffect(() => {
+        dispatch(setLoding(queryIsLoading))
         if(data) {
             dispatch(setTV(data. results))
-        }
-        //fetchTVShows()    
-    }, [activeTVGenre, page, data, dispatch])
+        }    
+    }, [activeTVGenre, page, data, queryIsLoading, dispatch])
 
 if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Failed to load tv shows.</div>;
