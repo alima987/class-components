@@ -1,10 +1,10 @@
 import { createContext } from "react";
 
- const MovieContext = createContext({
+ export const MovieContext = createContext({
 
 })
 
- const MovieProvider = ({children}) => {
+ export const MovieProvider = ({children}) => {
 
 
 }

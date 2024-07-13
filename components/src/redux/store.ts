@@ -6,19 +6,23 @@ import { movieApi } from '../services/movieApi'
 import { tvApi } from "../services/tvApi";
 import { genreApi } from "../services/genreApi";
 import LoadingReducer from "./slices/lodingSlice";
+import { searchApi } from "../services/searchApi";
+import SearchReducer from './slices/searchSlice';
 
 export const store = configureStore({
     reducer: {
       [movieApi.reducerPath]: movieApi.reducer,
       [tvApi.reducerPath]: tvApi.reducer,
       [genreApi.reducerPath]: genreApi.reducer,
+      [searchApi.reducerPath]: searchApi.reducer,
       movies: MovieReducer,
       genres: GenreReducer,
       tvs: TVReducer,
-      loading: LoadingReducer
+      loading: LoadingReducer,
+      search: SearchReducer
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(movieApi.middleware, tvApi.middleware, genreApi.middleware)
+      getDefaultMiddleware().concat(movieApi.middleware, tvApi.middleware, genreApi.middleware, searchApi.middleware)
 })
 export type RootState = ReturnType<typeof store.getState>
 
