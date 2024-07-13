@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Search from "../components/Search";
 import ErrorBtn from "../components/ErrorBtn";
 import ErrorBoundary from "../components/ErrorBoundary";
