@@ -6,7 +6,8 @@ export interface SearchData {
     vote_average: number,
     poster_path: string,
     name: string,
-    title: string
+    title: string,
+    first_air_date: string
     }
     export interface SearchState {
     search: SearchData[]
