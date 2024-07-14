@@ -1,9 +1,10 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import { useFetchSearchQuery } from "../services/searchApi";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearch } from "../redux/slices/searchSlice";
 import { RootState } from "../redux/store";
-import { Link } from "react-router-dom"
+import Link from 'next/link'
 
  const Search = () => {
     const [value, setValue] = useState('')
@@ -32,7 +33,7 @@ import { Link } from "react-router-dom"
                onChange={handleChange}
                placeholder="type..."
                />
-               <Link to="/search">
+               <Link href="/search">
                   <button>Search</button>
                </Link>
              </form>

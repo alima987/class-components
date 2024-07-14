@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect } from "react"
 import './NowPlaying.css'
 import { useDispatch, useSelector } from "react-redux"

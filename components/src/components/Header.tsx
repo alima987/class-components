@@ -1,16 +1,16 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import Link from 'next/link'
 
 const Header = () => {
 return (
     <div>
-        <Link to="/">
+        <Link href="/">
         <button>Home</button>
         </Link>
-        <Link to="/movies">
+        <Link href="/movies">
         <button>Movies</button>
         </Link>
-        <Link to="/tv">
+        <Link href="/tv">
         <button>TV Shows</button>
         </Link>
     </div>

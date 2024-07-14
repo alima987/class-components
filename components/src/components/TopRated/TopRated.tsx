@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect } from "react"
 import './TopRated.css'
 import { useDispatch, useSelector } from "react-redux";

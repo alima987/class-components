@@ -1,3 +1,4 @@
+"use client"
 import Search from "../components/Search";
 import ErrorBoundary from "../components/ErrorBoundary";
 import NowPlaying from "../components/NowPlaying/NowPlaying";
