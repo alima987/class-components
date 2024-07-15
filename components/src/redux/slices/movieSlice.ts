@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface MovieData {
-    id: string,
-    overview: string,
-    vote_average: number,
-    poster_path: string,
-    title: string,
+  id: string,
+  overview: string,
+  vote_average: number,
+  poster_path: string,
+  title: string,
     }
     export interface MovieState {
     nowPlaying: MovieData[], 

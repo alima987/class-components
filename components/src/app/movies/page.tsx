@@ -1,11 +1,12 @@
-/*"use client"
+"use client"
 import React, { useEffect, useState } from "react"
-import { setPopular } from "../redux/slices/movieSlice";
+import { setPopular } from "../../redux/slices/movieSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../redux/store";
-import Genres from "../components/Genres/MovieGenres";
-import { useFetchPopularQuery } from '../services/movieApi'
-import { setLoding } from "../redux/slices/lodingSlice";
+import { RootState } from "../../redux/store";
+import Genres from "../../components/Genres/MovieGenres";
+import { useFetchPopularQuery } from '../../services/movieApi'
+import { setLoding } from "../../redux/slices/lodingSlice";
+import Link from 'next/link';
 
 const Movies = () => {
     const [activeGenre, setActiveGenre] = useState(28)
@@ -36,6 +37,7 @@ return (
         page={page}
         setPage={setPage}
         />
+        <Link href="/detail">
         <div className="movie_list">
         {movies.map((el) => (
             <div key={el.id}>
@@ -45,7 +47,8 @@ return (
             </div>
         ))}
         </div>
+        </Link>
     </div>
 )
 }
-export default Movies*/
+export default Movies

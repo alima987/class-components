@@ -9,11 +9,11 @@ export const loadingSlice = createSlice({
     name: 'loading',
     initialState,
     reducers: {
-        setLoding: (state, action:PayloadAction<boolean>) => {
+        setLoading: (state, action:PayloadAction<boolean>) => {
            state.isLoading = action.payload
         }
 
     }
 })
-export const { setLoding } = loadingSlice.actions
+export const { setLoading } = loadingSlice.actions
 export default loadingSlice.reducer

@@ -1,11 +1,11 @@
-/*"use client"
+"use client"
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../redux/store";
-import { setTV } from "../redux/slices/tvSlice";
-import TVGenres from "../components/Genres/TVGenres";
-import { useFetchTVShowsQuery } from "../services/tvApi";
-import { setLoding } from "../redux/slices/lodingSlice";
+import { RootState } from "../../redux/store";
+import { setTV } from "../../redux/slices/tvSlice";
+import TVGenres from "../../components/Genres/TVGenres";
+import { useFetchTVShowsQuery } from "../../services/tvApi";
+import { setLoding } from "../../redux/slices/lodingSlice";
 
 const TVShows = () => {
     const [activeTVGenre, setActiveTVGenre] = useState(10759)
@@ -46,4 +46,4 @@ return (
     </div>
 )
 }
-export default TVShows*/
+export default TVShows

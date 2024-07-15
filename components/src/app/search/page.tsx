@@ -1,8 +1,8 @@
-/*"use client"
+"use client"
 import React from "react";
 import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const SearchResults = () => {
     const [searchResult, setSearchResult] = useState('')
@@ -23,4 +23,4 @@ return (
     </div>
 )
 }
-export default SearchResults*/
+export default SearchResults

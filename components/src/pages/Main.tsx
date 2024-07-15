@@ -1,4 +1,5 @@
-"use client"
+/*"use client"
+import React from "react";
 import Search from "../components/Search";
 import ErrorBoundary from "../components/ErrorBoundary";
 import NowPlaying from "../components/NowPlaying/NowPlaying";
@@ -24,4 +25,4 @@ const Main = () => {
         )
     }
 
-    export default Main
+    export default Main*/
