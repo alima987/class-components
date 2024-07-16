@@ -1,17 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface DetailData {
-    id: string,
+    id: number,
     backdrop_path: string,
     budget: number,
-    genres: [
-      {id: number, 
-      name: string
-    }
-    ],
-    origin_country: [
-      string
-    ],
+    genres: { id: number, name: string }[],
+    origin_country: string[],
     release_date: string,
     tagline: string,
     overview: string,
@@ -20,20 +14,20 @@ export interface DetailData {
     title: string,
     }
     export interface DetailState {
-    movieDetail: DetailData[] 
+    movieDetail: DetailData | null
   }
   const initialState: DetailState = {
-    movieDetail: []
+    movieDetail: null
   }
 
 export const detailSlice = createSlice({
     name: 'details',
     initialState,
     reducers: {
-      setMovieDeatail: (state, action: PayloadAction<DetailData[]>) => {
+      setMovieDetail: (state, action: PayloadAction<DetailData>) => {
         state.movieDetail = action.payload
       },
     }
 })
-export const { setMovieDeatail } = detailSlice.actions
+export const { setMovieDetail } = detailSlice.actions
 export default detailSlice.reducer
