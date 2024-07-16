@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import Genres from "../../components/Genres/MovieGenres";
 import { useFetchPopularQuery } from '../../services/movieApi'
-import { setLoding } from "../../redux/slices/lodingSlice";
+import { setLoading} from "../../redux/slices/lodingSlice";
 import Link from 'next/link';
 
 const Movies = () => {
@@ -17,7 +17,7 @@ const Movies = () => {
     const { data, error, isLoading: queryIsLoading } = useFetchPopularQuery({genreId: activeGenre, page})
     
     useEffect(() => {
-        dispatch(setLoding(queryIsLoading))
+        dispatch(setLoading(queryIsLoading))
         if(data) {
             dispatch(setPopular(data.results))
         } else {
@@ -37,17 +37,17 @@ return (
         page={page}
         setPage={setPage}
         />
-        <Link href="/detail">
         <div className="movie_list">
         {movies.map((el) => (
             <div key={el.id}>
+                <Link href={`/detail/${el.id}`}>
                 <img src= {`https://image.tmdb.org/t/p/w200${el.poster_path}`}/>
                 <h2>{el.title}</h2>
                 <p>{el.vote_average}</p>
+                </Link>
             </div>
         ))}
         </div>
-        </Link>
     </div>
 )
 }

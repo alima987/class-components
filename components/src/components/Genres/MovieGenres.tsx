@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../../redux/store"
 import { setMovieGenre } from "../../redux/slices/genreSlice"
 import { useFetchMovieGenreQuery } from "../../services/genreApi";
-import { setLoding } from "../../redux/slices/lodingSlice";
+import { setLoading } from "../../redux/slices/lodingSlice";
 interface Props {
     activeGenre: number;
     setActiveGenre: (genre: number) => void;
@@ -17,7 +17,7 @@ const Genres = ({ activeGenre, setActiveGenre, page, setPage }: Props) => {
     const { data, error, isLoading: queryIsLoading } = useFetchMovieGenreQuery({})
     
     useEffect(() => {
-        dispatch(setLoding(queryIsLoading))
+        dispatch(setLoading(queryIsLoading))
         if(data) {
             dispatch(setMovieGenre(data.genres))
         }
