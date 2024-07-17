@@ -5,7 +5,7 @@ import { RootState } from "../../redux/store";
 import { setTV } from "../../redux/slices/tvSlice";
 import TVGenres from "../../components/Genres/TVGenres";
 import { useFetchTVShowsQuery } from "../../services/tvApi";
-import { setLoding } from "../../redux/slices/lodingSlice";
+import { setLoading } from "../../redux/slices/lodingSlice";
 
 const TVShows = () => {
     const [activeTVGenre, setActiveTVGenre] = useState(10759)
@@ -16,7 +16,7 @@ const TVShows = () => {
     const { data, error, isLoading: queryIsLoading } = useFetchTVShowsQuery({tvGenreId: activeTVGenre, page})
 
     useEffect(() => {
-        dispatch(setLoding(queryIsLoading))
+        dispatch(setLoading(queryIsLoading))
         if(data) {
             dispatch(setTV(data. results))
         }    

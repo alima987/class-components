@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../../redux/store"
 import { MovieData, setNowPlaying} from "../../redux/slices/movieSlice";
 import { useFetchNowPlayingQuery } from "../../services/movieApi"; 
-import { setLoding } from "../../redux/slices/lodingSlice";
+import { setLoading } from "../../redux/slices/lodingSlice";
 
 const NowPlaying = () => {
 const movies = useSelector((state: RootState) => state.movies.nowPlaying); 
@@ -14,7 +14,7 @@ const dispatch = useDispatch()
 const { data, error, isLoading: queryIsLoading } = useFetchNowPlayingQuery({});
     
 useEffect(() => {
-    dispatch(setLoding(queryIsLoading))
+    dispatch(setLoading(queryIsLoading))
     if(data) {
         dispatch(setNowPlaying(data.results))
     } 

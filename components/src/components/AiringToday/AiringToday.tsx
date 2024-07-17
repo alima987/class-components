@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { setAiringToday } from "../../redux/slices/tvSlice";
 import { useFetchAiringTodayQuery } from "../../services/tvApi";
-import { setLoding } from "../../redux/slices/lodingSlice";
+import { setLoading } from "../../redux/slices/lodingSlice";
 const AiringToday = () => {
 const tvs = useSelector((state: RootState) => state.tvs.AiringToday); 
 const isLoading = useSelector((state: RootState) => state.loading.isLoading)
@@ -13,7 +13,7 @@ const dispatch = useDispatch()
 const { data, error, isLoading: queryIsLoading } = useFetchAiringTodayQuery({})
 
 useEffect(() => {
-      dispatch(setLoding(queryIsLoading))
+      dispatch(setLoading(queryIsLoading))
     if(data) {
       dispatch(setAiringToday(data.results))
     }    

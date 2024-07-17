@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { setTopRatedTv } from "../../redux/slices/tvSlice";
 import { useFetchTopRatedTVQuery } from "../../services/tvApi";
-import { setLoding } from "../../redux/slices/lodingSlice";
+import { setLoading } from "../../redux/slices/lodingSlice";
 const TopRatedTv = () => {
 const tvs = useSelector((state: RootState) => state.tvs.TopRatedTv); 
 const isLoading = useSelector((state: RootState) => state.loading.isLoading)
@@ -13,7 +13,7 @@ const dispatch = useDispatch()
 const { data, error, isLoading: queryIsLoading } = useFetchTopRatedTVQuery({})
 
 useEffect(() => {
-    dispatch(setLoding(queryIsLoading))
+    dispatch(setLoading(queryIsLoading))
     if(data) {
         dispatch(setTopRatedTv(data.results))
     }

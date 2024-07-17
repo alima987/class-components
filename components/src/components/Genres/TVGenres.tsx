@@ -3,7 +3,7 @@ import { RootState } from "../../redux/store";
 import { useEffect } from "react";
 import { setTVGenres } from "../../redux/slices/genreSlice";
 import { useFetchTVGenreQuery } from "../../services/genreApi";
-import { setLoding } from "../../redux/slices/lodingSlice";
+import { setLoading } from "../../redux/slices/lodingSlice";
 interface Props {
     activeTVGenre: number;
     setActiveTVGenre: (genre: number) => void;
@@ -17,7 +17,7 @@ const TVGenres = ({ activeTVGenre, setActiveTVGenre, page, setPage }: Props) => 
     const { data, error, isLoading: queryIsLoading } = useFetchTVGenreQuery({})
     
     useEffect(() => {
-        dispatch(setLoding(queryIsLoading))
+        dispatch(setLoading(queryIsLoading))
         if(data) {
             dispatch(setTVGenres(data.genres))
         }

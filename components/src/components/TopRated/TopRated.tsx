@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { setTopRated } from "../../redux/slices/movieSlice";
 import { useFetchTopRatedQuery } from '../../services/movieApi'
-import { setLoding } from "../../redux/slices/lodingSlice";
+import { setLoading } from "../../redux/slices/lodingSlice";
 const TopRated = () => {
 const movies = useSelector((state: RootState) => state.movies.topRated); 
 const isLoading = useSelector((state: RootState) => state.loading.isLoading)
@@ -13,7 +13,7 @@ const dispatch = useDispatch()
 const { data, error, isLoading: queryIsLoading } = useFetchTopRatedQuery({})
 
 useEffect(() => {
-    dispatch(setLoding(queryIsLoading))
+    dispatch(setLoading(queryIsLoading))
     if(data) {
         dispatch(setTopRated(data.results))
     }    
