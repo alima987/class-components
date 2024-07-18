@@ -17,7 +17,7 @@ export async function getMovieDetail( id: DetailData['id']) {
     return res.json();
   }
   export async function getReviewDetail( id: DetailData['id']) {
-    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?language=en-US&api_key=51ca1e241e720d72e2bb92a4b36859f5`);
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&api_key=51ca1e241e720d72e2bb92a4b36859f5`);
     return res.json();
   }
 
@@ -25,6 +25,7 @@ const DetailPage = async ({ params }: DetailProps) => {
     const { id } = params
     const movie = await getMovieDetail(id);
     const cast = await getCastDetail(id)
+    const review = await getReviewDetail(id)
     return (
         <div>
             <div className="movie_detail"> 
@@ -43,7 +44,7 @@ const DetailPage = async ({ params }: DetailProps) => {
                 <p>Budget ${movie.budget ? parseFloat(movie.budget).toLocaleString('en-US') : 'Budget not available'}</p>
                 <p>Overview {movie.overview}</p>
             </div>
-            <div>
+            <div className="cast_detail">
                 <div>{cast?.cast?.slice(0, 6).map((el: DetailData, index: number) => (
                     <div key={`${el.id}-${index}`}>
                         <img src= {`https://image.tmdb.org/t/p/w200${el.profile_path} ? https://image.tmdb.org/t/p/w200${el.profile_path} : "Profile not available"`}/>
@@ -52,6 +53,19 @@ const DetailPage = async ({ params }: DetailProps) => {
                     </div>
                 ))}</div>
                 <Link href={`/detail/${id}/cast`}>{cast.cast.length} actors</Link>
+            </div>
+            <div>
+                <div>
+                    {review.results.slice(0, 3).map((el: DetailData) => (
+                        <div key={el.id}>
+                            <p>{el.author}</p>
+                            <p>{el.created_at}</p>
+                            <p>{el.content}</p>
+                            <p>{el.rating}</p>
+                        </div>
+                    ))}
+                </div>
+                <Link href={`/detail/${id}/review`}>{review.results.length} reviews</Link>
             </div>
         </div>
     );

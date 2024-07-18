@@ -15,5 +15,6 @@ export interface DetailData {
     character: string,
     author: string,
     content: string,
-    
+    created_at: string,
+    rating: number
     }
