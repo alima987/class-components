@@ -1,51 +1,41 @@
 
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from 'next/navigation';
-import { RootState } from "../../../redux/store";
-import { setLoading } from "../../../redux/slices/lodingSlice";
-import { useFetchMovieDetailQuery } from "../../../services/detailApi";
-import { setMovieDetail } from "../../../redux/slices/detailSlice";
-import { GetStaticProps } from "next";
-import { MovieData } from "../../../redux/slices/movieSlice";
+import React from "react";
+import { DetailData } from "../../../utils/interfaces";
+
 export interface DetailProps {
     params: {
-        id: MovieData['id']
+        id: DetailData['id'],
     }
   }
-export async function getDetail( id: MovieData['id']) {
+export async function getMovieDetail( id: DetailData['id']) {
     const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=51ca1e241e720d72e2bb92a4b36859f5`);
-    return res.json();; 
+    return res.json();
   }
-  
+  console.log(getMovieDetail)
 const DetailPage = async ({ params }: DetailProps) => {
     const { id } = params
-    const movie = await getDetail(id)
-    console.log(movie)
-    //const details = useSelector((state: RootState) => state.details.movieDetail);
-    //const dispatch = useDispatch();
-    //const { data, error, isLoading: queryIsLoading } = useFetchMovieDetailQuery(movieId);
-    /*useEffect(() => {
-            dispatch(setLoading(queryIsLoading));
-            if (data) {
-                dispatch(setMovieDetail(data));
-            } else if (error) {
-                console.error("Failed to fetch movie:", error);
-            }
-    }, [data, queryIsLoading, dispatch, error]);
-
-    if (error) return <div>Failed to load detailed page.</div>;*/
-    
+    const movie = await getMovieDetail(id);
     return (
         <div>
-            {movie.title}
+            <div className="movie_detail"> 
+                <p>{movie.title}</p>
+                <img src= {`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
+                <p>{movie.vote_average}</p>
+                <p>Year {movie.release_date ? movie.release_date.slice(0, 4) : 'Year not available'}</p>
+                <p>Country {movie.origin_country}</p>
+                <div>Genres {movie.genres && movie.genres.map((genre: { id: number; name: string}) => (
+                    <div key={genre.id}>
+                        <p>{genre.name}</p>
+                    </div>
+                ))}
+                </div>
+                <p>Tagline {movie.tagline}</p>
+                <p>Budget ${movie.budget ? parseFloat(movie.budget).toLocaleString('en-US') : 'Budget not available'}</p>
+                <p>Overview {movie.overview}</p>
+            </div>
         </div>
     );
 };
 export default DetailPage;
-export async function generateStaticParams() {
-        const response = await fetch(`http://localhost:3000/detail`);
-        const posts = await response.json();
-        return posts.map((post: { id: MovieData['id']; }) => ({ id: post.id }));
-}
+
 

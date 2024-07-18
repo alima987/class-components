@@ -21,7 +21,7 @@ const Movies = () => {
         if(data) {
             dispatch(setPopular(data.results))
         } else {
-            console.error("Failed to fetch movies:", error)
+            console.error("Failed to fetch movies:")
         }  
     }, [activeGenre, page, data, queryIsLoading, dispatch])
 
