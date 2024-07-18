@@ -1,6 +1,7 @@
 
 import React from "react";
 import { DetailData } from "../../../utils/interfaces";
+import Link from 'next/link'
 
 export interface DetailProps {
     params: {
@@ -11,10 +12,19 @@ export async function getMovieDetail( id: DetailData['id']) {
     const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=51ca1e241e720d72e2bb92a4b36859f5`);
     return res.json();
   }
-  console.log(getMovieDetail)
+  export async function getCastDetail( id: DetailData['id']) {
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?language=en-US&api_key=51ca1e241e720d72e2bb92a4b36859f5`);
+    return res.json();
+  }
+  export async function getReviewDetail( id: DetailData['id']) {
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?language=en-US&api_key=51ca1e241e720d72e2bb92a4b36859f5`);
+    return res.json();
+  }
+
 const DetailPage = async ({ params }: DetailProps) => {
     const { id } = params
     const movie = await getMovieDetail(id);
+    const cast = await getCastDetail(id)
     return (
         <div>
             <div className="movie_detail"> 
@@ -32,6 +42,16 @@ const DetailPage = async ({ params }: DetailProps) => {
                 <p>Tagline {movie.tagline}</p>
                 <p>Budget ${movie.budget ? parseFloat(movie.budget).toLocaleString('en-US') : 'Budget not available'}</p>
                 <p>Overview {movie.overview}</p>
+            </div>
+            <div>
+                <div>{cast?.cast?.slice(0, 6).map((el: DetailData, index: number) => (
+                    <div key={`${el.id}-${index}`}>
+                        <img src= {`https://image.tmdb.org/t/p/w200${el.profile_path} ? https://image.tmdb.org/t/p/w200${el.profile_path} : "Profile not available"`}/>
+                        <p>{el.name}</p>
+                        <p>{el.character}</p>
+                    </div>
+                ))}</div>
+                <Link href={`/detail/${id}/cast`}>{cast.cast.length} actors</Link>
             </div>
         </div>
     );

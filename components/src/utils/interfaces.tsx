@@ -10,10 +10,10 @@ export interface DetailData {
     vote_average: number,
     poster_path: string,
     title: string,
-    }
-export interface DetailCast {
-    id: number,
     name: string,
     profile_path: string,
-    character: string
-}
+    character: string,
+    author: string,
+    content: string,
+    
+    }
