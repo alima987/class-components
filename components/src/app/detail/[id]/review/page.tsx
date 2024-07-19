@@ -1,3 +1,4 @@
+import React from "react";
 import { DetailData } from "../../../../utils/interfaces";
 
 export interface ReviewProps {
@@ -19,7 +20,7 @@ const FullReview = async({params}: ReviewProps) => {
            {review.results.map((el: DetailData) => (
                         <div key={el.id}>
                             <p>{el.author}</p>
-                            <p>{el.created_at}</p>
+                            <p>{el.created_at ? el.created_at.slice(0, 10) : 'Year not available'}</p>
                             <p>{el.content}</p>
                             <p>{el.rating}</p>
                         </div>

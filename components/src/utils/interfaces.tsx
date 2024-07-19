@@ -18,3 +18,24 @@ export interface DetailData {
     created_at: string,
     rating: number
     }
+export interface TVDetailData {
+    id: number,
+    backdrop_path: string,
+    genres: { id: number, name: string }[],
+    first_air_date: string,
+    episode_run_time: [],
+    last_air_date: string,
+    name: string,
+    origin_country: string[],
+    overview: string,
+    poster_path: string,
+    tagline: string,
+    status: string,
+    vote_average: number,
+    character: string,
+    profile_path: string,
+    author: string,
+    content: string,
+    created_at: string,
+    rating: number
+}

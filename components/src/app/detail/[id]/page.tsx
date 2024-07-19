@@ -27,13 +27,13 @@ const DetailPage = async ({ params }: DetailProps) => {
     const cast = await getCastDetail(id)
     const review = await getReviewDetail(id)
     return (
-        <div>
+        <section>
             <div className="movie_detail"> 
                 <p>{movie.title}</p>
                 <img src= {`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
-                <p>{movie.vote_average}</p>
+                <span>{movie.vote_average}</span>
                 <p>Year {movie.release_date ? movie.release_date.slice(0, 4) : 'Year not available'}</p>
-                <p>Country {movie.origin_country}</p>
+                <span>Country {movie.origin_country}</span>
                 <div>Genres {movie.genres && movie.genres.map((genre: { id: number; name: string}) => (
                     <div key={genre.id}>
                         <p>{genre.name}</p>
@@ -41,7 +41,7 @@ const DetailPage = async ({ params }: DetailProps) => {
                 ))}
                 </div>
                 <p>Tagline {movie.tagline}</p>
-                <p>Budget ${movie.budget ? parseFloat(movie.budget).toLocaleString('en-US') : 'Budget not available'}</p>
+                <span>Budget ${movie.budget ? parseFloat(movie.budget).toLocaleString('en-US') : 'Budget not available'}</span>
                 <p>Overview {movie.overview}</p>
             </div>
             <div className="cast_detail">
@@ -59,7 +59,7 @@ const DetailPage = async ({ params }: DetailProps) => {
                     {review.results.slice(0, 3).map((el: DetailData) => (
                         <div key={el.id}>
                             <p>{el.author}</p>
-                            <p>{el.created_at}</p>
+                            <p>{el.created_at ? el.created_at.slice(0, 10) : 'Year not available'}</p>
                             <p>{el.content}</p>
                             <p>{el.rating}</p>
                         </div>
@@ -67,7 +67,7 @@ const DetailPage = async ({ params }: DetailProps) => {
                 </div>
                 <Link href={`/detail/${id}/review`}>{review.results.length} reviews</Link>
             </div>
-        </div>
+        </section>
     );
 };
 export default DetailPage;

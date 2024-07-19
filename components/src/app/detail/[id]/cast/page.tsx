@@ -1,3 +1,4 @@
+import React from "react";
 import { DetailData } from "../../../../utils/interfaces";
 
 export interface CastProps {

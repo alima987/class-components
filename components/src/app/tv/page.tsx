@@ -6,6 +6,7 @@ import { setTV } from "../../redux/slices/tvSlice";
 import TVGenres from "../../components/Genres/TVGenres";
 import { useFetchTVShowsQuery } from "../../services/tvApi";
 import { setLoading } from "../../redux/slices/lodingSlice";
+import Link from 'next/link';
 
 const TVShows = () => {
     const [activeTVGenre, setActiveTVGenre] = useState(10759)
@@ -37,9 +38,11 @@ return (
         <div>
             {tvs.map((tv) => (
                 <div key={tv.id}>
+                    <Link href={`/detail/${tv.id}/tvdetail`}>
                     <img src= {`https://image.tmdb.org/t/p/w200${tv.poster_path}`}/>
                     <h2>{tv.name}</h2>
                     <p>{tv.vote_average}</p>
+                    </Link>
                 </div>
             ))}
         </div>
