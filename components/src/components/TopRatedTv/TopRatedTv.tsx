@@ -6,6 +6,8 @@ import { RootState } from "../../redux/store";
 import { setTopRatedTv } from "../../redux/slices/tvSlice";
 import { useFetchTopRatedTVQuery } from "../../services/tvApi";
 import { setLoading } from "../../redux/slices/lodingSlice";
+import Link from 'next/link';
+
 const TopRatedTv = () => {
 const tvs = useSelector((state: RootState) => state.tvs.TopRatedTv); 
 const isLoading = useSelector((state: RootState) => state.loading.isLoading)
@@ -28,9 +30,11 @@ return (
         <div className="upcom_list">
         {tvs.map((el) => (
             <div key={el.id}>
+                <Link href={`/detail/${el.id}/tvdetail`}>
                 <img src= {`https://image.tmdb.org/t/p/w200${el.poster_path}`}/>
                 <h2>{el.name}</h2>
                 <p>{el.vote_average}</p>
+                </Link>
             </div>
         ))}
         </div>

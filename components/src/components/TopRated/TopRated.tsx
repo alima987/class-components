@@ -6,6 +6,8 @@ import { RootState } from "../../redux/store";
 import { setTopRated } from "../../redux/slices/movieSlice";
 import { useFetchTopRatedQuery } from '../../services/movieApi'
 import { setLoading } from "../../redux/slices/lodingSlice";
+import Link from 'next/link';
+
 const TopRated = () => {
 const movies = useSelector((state: RootState) => state.movies.topRated); 
 const isLoading = useSelector((state: RootState) => state.loading.isLoading)
@@ -26,9 +28,11 @@ return (
         <div className="toprated_list">
         {movies.map((el) => (
             <div key={el.id}>
+                <Link href={`/detail/${el.id}`}>
                 <img src= {`https://image.tmdb.org/t/p/w200${el.poster_path}`}/>
                 <h2>{el.title}</h2>
                 <p>{el.vote_average}</p>
+                </Link>
             </div>
         ))}
         </div>

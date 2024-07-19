@@ -1,6 +1,5 @@
 "use client"
 import React, { Suspense } from 'react';
-import Search from "../components/Search";
 import ErrorBoundary from "../components/ErrorBoundary";
 
 const NowPlaying = React.lazy(() => import("../components/NowPlaying/NowPlaying"));
@@ -12,7 +11,6 @@ const Main = () => {
     return (
         <ErrorBoundary>
             <div className='movie-app'>
-                <Search/>
                 <div className="movies_container">
                     <div className="movies">
                         <Suspense fallback={<div>Loading...</div>}>
