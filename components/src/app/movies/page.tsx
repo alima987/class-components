@@ -7,6 +7,7 @@ import Genres from "../../components/Genres/MovieGenres";
 import { useFetchPopularQuery } from '../../services/movieApi'
 import { setLoading} from "../../redux/slices/lodingSlice";
 import Link from 'next/link';
+import Pagination from "../../components/Pagination";
 
 const Movies = () => {
     const [activeGenre, setActiveGenre] = useState(28)
@@ -15,14 +16,12 @@ const Movies = () => {
     const isLoading = useSelector((state: RootState) => state.loading.isLoading)
     const dispatch = useDispatch()
     const { data, error, isLoading: queryIsLoading } = useFetchPopularQuery({genreId: activeGenre, page})
-    
+    const totalPages = Math.ceil(movies.length / page)
     useEffect(() => {
         dispatch(setLoading(queryIsLoading))
         if(data) {
             dispatch(setPopular(data.results))
-        } else {
-            console.error("Failed to fetch movies:")
-        }  
+        } 
     }, [activeGenre, page, data, queryIsLoading, dispatch])
 
 if (isLoading) return <div>Loading...</div>;
@@ -32,10 +31,7 @@ return (
     <div>
         <h2>Movies</h2>
         <Genres 
-        activeGenre={activeGenre}
         setActiveGenre={setActiveGenre}
-        page={page}
-        setPage={setPage}
         />
         <div className="movie_list">
         {movies.map((el) => (
@@ -48,6 +44,12 @@ return (
             </div>
         ))}
         </div>
+        <Pagination 
+        page={page}
+        setPage={setPage}
+        totalPages={totalPages}
+        movies={movies}
+        />
     </div>
 )
 }

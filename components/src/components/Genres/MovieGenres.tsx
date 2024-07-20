@@ -5,12 +5,9 @@ import { setMovieGenre } from "../../redux/slices/genreSlice"
 import { useFetchMovieGenreQuery } from "../../services/genreApi";
 import { setLoading } from "../../redux/slices/lodingSlice";
 interface Props {
-    activeGenre: number;
     setActiveGenre: (genre: number) => void;
-    page: number;
-    setPage: (page: number) => void; 
 }
-const Genres = ({ activeGenre, setActiveGenre, page, setPage }: Props) => {
+const Genres = ({ setActiveGenre }: Props) => {
     const genres = useSelector((state: RootState) => state.genres.movieGenre);
     const isLoading = useSelector((state: RootState) => state.loading.isLoading)
     const dispatch = useDispatch()
