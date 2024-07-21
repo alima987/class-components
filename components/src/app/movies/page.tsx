@@ -16,13 +16,17 @@ const Movies = () => {
     const isLoading = useSelector((state: RootState) => state.loading.isLoading)
     const dispatch = useDispatch()
     const { data, error, isLoading: queryIsLoading } = useFetchPopularQuery({genreId: activeGenre, page})
-    const totalPages = Math.ceil(movies.length / page)
+    
     useEffect(() => {
         dispatch(setLoading(queryIsLoading))
         if(data) {
             dispatch(setPopular(data.results))
         } 
     }, [activeGenre, page, data, queryIsLoading, dispatch])
+
+    const handlePageChange = (selectedItem: { selected: number }) => {
+        setPage(selectedItem.selected + 1); 
+    };
 
 if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Failed to load movies.</div>;
@@ -44,12 +48,10 @@ return (
             </div>
         ))}
         </div>
-        <Pagination 
-        page={page}
-        setPage={setPage}
-        totalPages={totalPages}
-        movies={movies}
-        />
+        <Pagination
+                pageCount={10} 
+                onPageChange={handlePageChange}
+            />
     </div>
 )
 }
