@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from "react"
-import './AiringToday.css'
+import styles from './AiringToday.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { setAiringToday } from "../../redux/slices/tvSlice";
@@ -26,9 +26,9 @@ if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Failed to load airing today tv shows. {error.toString()}</div>;
 
 return (
-    <div className="pop_cont">
+    <div className={styles.pop_cont}>
         <h2>Airing Today</h2>
-        <div className="popular_list">
+        <div className={styles.popular_list}>
         {tvs.map((el) => (
             <div key={el.id}>
                 <Link href={`/detail/${el.id}/tvdetail`}>

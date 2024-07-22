@@ -7,6 +7,7 @@ import TVGenres from "../../components/Genres/TVGenres";
 import { useFetchTVShowsQuery } from "../../services/tvApi";
 import { setLoading } from "../../redux/slices/lodingSlice";
 import Link from 'next/link';
+import Pagination from "../../components/Pagination";
 
 const TVShows = () => {
     const [activeTVGenre, setActiveTVGenre] = useState(10759)
@@ -26,14 +27,15 @@ const TVShows = () => {
 if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Failed to load tv shows.</div>;
 
+const handlePageChange = (selectedItem: { selected: number }) => {
+    setPage(selectedItem.selected + 1); 
+};
+
 return (
     <div>
         <h2>TVShows</h2>
         <TVGenres 
-        activeTVGenre={activeTVGenre}
         setActiveTVGenre={setActiveTVGenre}
-        page={page}
-        setPage={setPage}
         />
         <div>
             {tvs.map((tv) => (
@@ -46,6 +48,10 @@ return (
                 </div>
             ))}
         </div>
+        <Pagination
+            pageCount={10} 
+            onPageChange={handlePageChange}
+            />
     </div>
 )
 }

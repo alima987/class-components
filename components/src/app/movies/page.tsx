@@ -8,6 +8,7 @@ import { useFetchPopularQuery } from '../../services/movieApi'
 import { setLoading} from "../../redux/slices/lodingSlice";
 import Link from 'next/link';
 import Pagination from "../../components/Pagination";
+import styles from './movies.module.css'
 
 const Movies = () => {
     const [activeGenre, setActiveGenre] = useState(28)
@@ -49,8 +50,8 @@ return (
         ))}
         </div>
         <Pagination
-                pageCount={10} 
-                onPageChange={handlePageChange}
+            pageCount={10} 
+            onPageChange={handlePageChange}
             />
     </div>
 )

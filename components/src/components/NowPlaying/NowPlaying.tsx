@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from "react"
-import './NowPlaying.css'
+import styles from './NowPlaying.module.css'
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../../redux/store"
 import { MovieData, setNowPlaying} from "../../redux/slices/movieSlice";
@@ -24,9 +24,9 @@ useEffect(() => {
 if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Failed to load now playing movies.</div>;
 return (
-    <div className="nowPlay_cont">
+    <div className={styles.nowPlay_cont}>
         <h2>Now Playing</h2>
-        <div className="nowPlay_list">
+        <div className={styles.nowPlay_list}>
         {movies.map((el: MovieData) => (
             <div key={el.id}>
                 <Link href={`/detail/${el.id}`}>

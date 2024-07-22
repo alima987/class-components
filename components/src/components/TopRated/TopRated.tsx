@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from "react"
-import './TopRated.css'
+import styles from './TopRated.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { setTopRated } from "../../redux/slices/movieSlice";
@@ -23,9 +23,9 @@ useEffect(() => {
 if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Failed to load now playing movies.</div>;
 return (
-    <div className="top_cont">
+    <div className={styles.top_cont}>
         <h2>Top Rated Movies</h2>
-        <div className="toprated_list">
+        <div className={styles.toprated_list}>
         {movies.map((el) => (
             <div key={el.id}>
                 <Link href={`/detail/${el.id}`}>

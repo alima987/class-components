@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect} from "react"
-import './TopRatedTv.css'
+import styles from './TopRatedTv.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { setTopRatedTv } from "../../redux/slices/tvSlice";
@@ -25,9 +25,9 @@ if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Failed to load top rated tv shows.</div>;
 
 return (
-    <div className="upcom_cont">
+    <div className={styles.upcom_cont}>
         <h2>Top Rated TV Shows</h2>
-        <div className="upcom_list">
+        <div className={styles.upcom_list}>
         {tvs.map((el) => (
             <div key={el.id}>
                 <Link href={`/detail/${el.id}/tvdetail`}>

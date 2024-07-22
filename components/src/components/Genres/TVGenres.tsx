@@ -5,12 +5,9 @@ import { setTVGenres } from "../../redux/slices/genreSlice";
 import { useFetchTVGenreQuery } from "../../services/genreApi";
 import { setLoading } from "../../redux/slices/lodingSlice";
 interface Props {
-    activeTVGenre: number;
     setActiveTVGenre: (genre: number) => void;
-    page: number;
-    setPage: (page: number) => void; 
 }
-const TVGenres = ({ activeTVGenre, setActiveTVGenre, page, setPage }: Props) => {
+const TVGenres = ({ setActiveTVGenre}: Props) => {
     const genres = useSelector((state: RootState) => state.genres.tvGenres); 
     const isLoading = useSelector((state: RootState) => state.loading.isLoading)
     const dispatch = useDispatch()

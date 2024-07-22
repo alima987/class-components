@@ -6,7 +6,6 @@ import Link from 'next/link';
 
 const SearchResults = () => {
     const search = useSelector((state: RootState) => state.search.search); 
-
 return (
     <div>
         <div>
