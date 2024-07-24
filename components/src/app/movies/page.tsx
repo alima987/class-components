@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import { setPopular } from "../../redux/slices/movieSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
@@ -9,10 +9,10 @@ import { setLoading} from "../../redux/slices/lodingSlice";
 import Link from 'next/link';
 import Pagination from "../../components/Pagination";
 import styles from './movies.module.css'
+import { MovieContext } from "../../context/MovieContext";
 
 const Movies = () => {
-    const [activeGenre, setActiveGenre] = useState(28)
-    const [page, setPage] = useState(1)
+    const { activeGenre, setActiveGenre, page, setPage } = useContext(MovieContext)
     const movies = useSelector((state: RootState) => state.movies.popular);  
     const isLoading = useSelector((state: RootState) => state.loading.isLoading)
     const dispatch = useDispatch()
@@ -27,8 +27,7 @@ const Movies = () => {
 
     const handlePageChange = (selectedItem: { selected: number }) => {
         setPage(selectedItem.selected + 1); 
-    };
-
+    }
 if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Failed to load movies.</div>;
 

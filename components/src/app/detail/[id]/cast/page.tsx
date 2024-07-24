@@ -1,17 +1,8 @@
 import React from "react";
 import { DetailData } from "../../../../utils/interfaces";
+import { DetailProps, getCastDetail } from "../page";
 
-export interface CastProps {
-    params: {
-        id: DetailData['id'],
-    }
-  }
-  export async function getCastDetail( id: DetailData['id']) {
-    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?language=en-US&api_key=51ca1e241e720d72e2bb92a4b36859f5`);
-    return res.json();
-  }
-
-const FullCast = async ({ params }: CastProps) => {
+const FullCast = async ({ params }: DetailProps) => {
     const { id } = params
     const cast = await getCastDetail(id)
     return (

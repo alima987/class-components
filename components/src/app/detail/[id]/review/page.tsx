@@ -1,17 +1,8 @@
 import React from "react";
 import { DetailData } from "../../../../utils/interfaces";
+import { DetailProps, getReviewDetail } from "../page";
 
-export interface ReviewProps {
-    params: {
-        id: DetailData['id'],
-    }
-  }
-export async function getReviewDetail( id: DetailData['id']) {
-    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&api_key=51ca1e241e720d72e2bb92a4b36859f5`);
-    return res.json();
-  }
-
-const FullReview = async({params}: ReviewProps) => {
+const FullReview = async({params}: DetailProps) => {
     const { id } = params
     const review = await getReviewDetail(id)
     return (

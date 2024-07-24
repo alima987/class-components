@@ -1,17 +1,8 @@
 import React from "react";
 import { TVDetailData } from "../../../../../utils/interfaces";
+import { getCastTVDetail, TVDetailProps } from "../page";
 
-
-export interface TVCastProps {
-    params: {
-        id: TVDetailData['id'],
-    }
-  }
-  export async function getCastTVDetail( id: TVDetailData['id']) {
-    const res = await fetch(`https://api.themoviedb.org/3/tv/${id}/credits?language=en-US&api_key=51ca1e241e720d72e2bb92a4b36859f5`);
-    return res.json();
-  }
-const FullTVCast = async ({ params }: TVCastProps) => {
+const FullTVCast = async ({ params }: TVDetailProps) => {
     const { id } = params
     const cast = await getCastTVDetail(id)
     return (

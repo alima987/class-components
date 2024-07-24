@@ -1,4 +1,3 @@
-
 import React from "react";
 import { DetailData } from "../../../utils/interfaces";
 import Link from 'next/link'
