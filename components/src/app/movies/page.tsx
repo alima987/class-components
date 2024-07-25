@@ -12,7 +12,7 @@ import styles from './movies.module.css'
 import { MovieContext } from "../../context/MovieContext";
 
 const Movies = () => {
-    const { activeGenre, setActiveGenre, handlePageChange } = useContext(MovieContext)
+    const { activeGenre, setActiveGenre } = useContext(MovieContext)
     const [page, setPage] = useState<number>(1)
     const movies = useSelector((state: RootState) => state.movies.popular);  
     const isLoading = useSelector((state: RootState) => state.loading.isLoading)
@@ -29,19 +29,25 @@ const Movies = () => {
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Failed to load movies.</div>;
 
+    const handlePageChange = (selectedItem: { selected: number }) => {
+        setPage(selectedItem.selected + 1); 
+    }
+
 return (
-    <div>
-        <h2>Movies</h2>
+    <div className={styles.movieContainer}>
+        <h2 className={styles.movie_title}>Movies</h2>
         <Genres 
         setActiveGenre={setActiveGenre}
         />
-        <div className="movie_list">
+        <div className={styles.movie_list}>
         {movies.map((el) => (
-            <div key={el.id}>
+            <div key={el.id} className={styles.movie_list_item}>
                 <Link href={`/detail/${el.id}`}>
-                <img src= {`https://image.tmdb.org/t/p/w200${el.poster_path}`}/>
-                <h2>{el.title}</h2>
-                <p>{el.vote_average}</p>
+                <img src= {`https://image.tmdb.org/t/p/w500${el.poster_path}`} className={styles.movie_img}/>
+                <div className={styles.movie_list_body}>
+                <h5 className={styles.movie_list_title}>{el.title}</h5>
+                <p className={styles.movie_list_vote}>{el.vote_average}</p>
+                </div>
                 </Link>
             </div>
         ))}

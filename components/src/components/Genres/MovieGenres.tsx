@@ -4,6 +4,7 @@ import { RootState } from "../../redux/store"
 import { setMovieGenre } from "../../redux/slices/genreSlice"
 import { useFetchMovieGenreQuery } from "../../services/genreApi";
 import { setLoading } from "../../redux/slices/lodingSlice";
+import styles from './movieGenres.module.css'
 interface Props {
     setActiveGenre: (genre: number) => void;
 }
@@ -24,12 +25,12 @@ const Genres = ({ setActiveGenre }: Props) => {
     if (error) return <div>Failed to load movie genres.</div>;
 
 return (
-    <div className="genres_container">
-       <h2>Genres</h2>
-       <div>
+    <div className={styles.genres_container}>
+       <div className={styles.genres_list}>
        {genres.map((genre) => (
         <div key={genre.id}>
             <button
+            className={styles.genres_btn}
             onClick={() => setActiveGenre(genre.id)}>
                 {genre.name}
             </button>
