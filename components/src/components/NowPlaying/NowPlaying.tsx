@@ -8,7 +8,6 @@ import { useFetchNowPlayingQuery } from "../../services/movieApi";
 import { setLoading } from "../../redux/slices/lodingSlice";
 import Link from 'next/link';
 
-
 const NowPlaying = () => {
 const movies = useSelector((state: RootState) => state.movies.nowPlaying); 
 const isLoading = useSelector((state: RootState) => state.loading.isLoading)

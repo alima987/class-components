@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { setTV } from "../../redux/slices/tvSlice";
@@ -8,10 +8,11 @@ import { useFetchTVShowsQuery } from "../../services/tvApi";
 import { setLoading } from "../../redux/slices/lodingSlice";
 import Link from 'next/link';
 import Pagination from "../../components/Pagination";
+import { MovieContext } from "../../context/MovieContext";
 
 const TVShows = () => {
-    const [activeTVGenre, setActiveTVGenre] = useState(10759)
-    const [page, setPage] = useState(1)
+    const { activeTVGenre, setActiveTVGenre, handlePageChange } = useContext(MovieContext)
+    const [page, setPage] = useState<number>(1)
     const tvs = useSelector((state: RootState) => state.tvs.tvs);  
     const isLoading = useSelector((state: RootState) => state.loading.isLoading)
     const dispatch = useDispatch()
@@ -24,12 +25,8 @@ const TVShows = () => {
         }    
     }, [activeTVGenre, page, data, queryIsLoading, dispatch])
 
-if (isLoading) return <div>Loading...</div>;
-if (error) return <div>Failed to load tv shows.</div>;
-
-const handlePageChange = (selectedItem: { selected: number }) => {
-    setPage(selectedItem.selected + 1); 
-};
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Failed to load tv shows.</div>;
 
 return (
     <div>

@@ -6,31 +6,30 @@ interface MovieProviderProps {
   interface MovieContextType {
     activeGenre: number;
     setActiveGenre: Dispatch<SetStateAction<number>>;
-    page: number;
-    setPage: Dispatch<SetStateAction<number>>;
+    activeTVGenre: number
+    setActiveTVGenre: Dispatch<SetStateAction<number>>;
     handlePageChange: (selectedItem: { selected: number }) => void;
   }
   export const MovieContext = createContext<MovieContextType>({
     activeGenre: 28,
     setActiveGenre: () => {},
-    page: 1,
-    setPage: () => {},
-    handlePageChange: () => {},
+    activeTVGenre: 10759,
+    setActiveTVGenre: () => {},
+    handlePageChange: () => {}
   })
 const MovieProvider = ({ children }: MovieProviderProps) => {
     const [activeGenre, setActiveGenre] = useState(28)
-    const [page, setPage] = useState(1)
-
+    const [page, setPage] = useState<number>(1)
+    const [activeTVGenre, setActiveTVGenre] = useState(10759)
     const handlePageChange = (selectedItem: { selected: number }) => {
-        setPage(selectedItem.selected + 1); 
-    };
+      setPage(selectedItem.selected + 1); 
+  }
 
-   
     const contextValue = {
         activeGenre,
         setActiveGenre,
-        page, 
-        setPage,
+        activeTVGenre, 
+        setActiveTVGenre,
         handlePageChange
       }
       return (

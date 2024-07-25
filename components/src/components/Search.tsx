@@ -1,14 +1,13 @@
 "use client"
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFetchSearchQuery } from "../services/searchApi";
 import { useDispatch } from "react-redux";
 import { setSearch } from "../redux/slices/searchSlice";
 import Link from 'next/link'
-import { MovieContext } from "../context/MovieContext";
 
  const Search = () => {
     const [value, setValue] = useState('')
-    const { page, setPage } = useContext(MovieContext)
+    const [page, setPage] = useState<number>(1)
     const { data, error, isLoading } = useFetchSearchQuery({searchText: value, page})
     const dispatch = useDispatch()
     useEffect(() => {
