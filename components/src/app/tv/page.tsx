@@ -7,7 +7,7 @@ import TVGenres from "../../components/Genres/TVGenres";
 import { useFetchTVShowsQuery } from "../../services/tvApi";
 import { setLoading } from "../../redux/slices/lodingSlice";
 import Link from 'next/link';
-import Pagination from "../../components/Pagination";
+import Pagination from "../../components/Pagination/Pagination";
 import { MovieContext } from "../../context/MovieContext";
 
 const TVShows = () => {

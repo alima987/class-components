@@ -7,9 +7,10 @@ import Genres from "../../components/Genres/MovieGenres";
 import { useFetchPopularQuery } from '../../services/movieApi'
 import { setLoading} from "../../redux/slices/lodingSlice";
 import Link from 'next/link';
-import Pagination from "../../components/Pagination";
+import Pagination from "../../components/Pagination/Pagination";
 import styles from './movies.module.css'
 import { MovieContext } from "../../context/MovieContext";
+import { LiaStarSolid } from "react-icons/lia";
 
 const Movies = () => {
     const { activeGenre, setActiveGenre } = useContext(MovieContext)
@@ -46,7 +47,10 @@ return (
                 <img src= {`https://image.tmdb.org/t/p/w500${el.poster_path}`} className={styles.movie_img}/>
                 <div className={styles.movie_list_body}>
                 <h5 className={styles.movie_list_title}>{el.title}</h5>
+                <div className={styles.movie_list_rate}>
+                <LiaStarSolid />
                 <p className={styles.movie_list_vote}>{el.vote_average}</p>
+                </div>
                 </div>
                 </Link>
             </div>
