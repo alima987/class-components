@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { setPopular } from "../../redux/slices/movieSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
@@ -9,12 +9,11 @@ import { setLoading} from "../../redux/slices/lodingSlice";
 import Link from 'next/link';
 import Pagination from "../../components/Pagination/Pagination";
 import styles from './movies.module.css'
-import { MovieContext } from "../../context/MovieContext";
 import { LiaStarSolid } from "react-icons/lia";
 
 const Movies = () => {
-    const { activeGenre, setActiveGenre } = useContext(MovieContext)
-    const [page, setPage] = useState<number>(1)
+    const [activeGenre, setActiveGenre] = useState(28)
+    const [page, setPage] = useState(1)
     const movies = useSelector((state: RootState) => state.movies.popular);  
     const isLoading = useSelector((state: RootState) => state.loading.isLoading)
     const dispatch = useDispatch()

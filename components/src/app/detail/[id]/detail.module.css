@@ -1,0 +1,124 @@
+.movie_detail_Container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .movie_detail {
+    margin-bottom: 40px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 94px;
+  }
+  
+  .movie_detail_title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .movie_detail_img {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .movie_detail_vote {
+    display: inline-block;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .movie_detail_year {
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  
+  .movie_detail_genres {
+    margin-bottom: 20px;
+  }
+  
+  .movie_detail_genres p {
+    display: inline-block;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 5px;
+  }
+  
+  .movie_cast {
+    margin-bottom: 40px;
+  }
+  
+  .movie_cast_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .movie_cast_list div {
+    text-align: center;
+    max-width: 120px;
+  }
+  
+  .movie_cast_list img {
+    width: 100%;
+    border-radius: 50%;
+  }
+  
+  .movie_review {
+    margin-bottom: 40px;
+  }
+  
+  .movie_review div {
+    margin-bottom: 20px;
+  }
+  
+  .movie_review p {
+    margin: 5px 0;
+  }
+.movie_detail_value {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 388px;
+    text-align: justify;
+}
+
+.movie_detail_genres {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie_detail_genres p {
+    margin: 0 8px 0 0; 
+}
+
+.movie_detail_info {
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    gap: 16px; 
+}
+
+.movie_detail_item {
+    display: contents; 
+}
+
+.movie_detail_label {
+    font-weight: bold;
+    text-align: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 83px;
+}
+

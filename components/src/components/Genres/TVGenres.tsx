@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { setTVGenres } from "../../redux/slices/genreSlice";
 import { useFetchTVGenreQuery } from "../../services/genreApi";
 import { setLoading } from "../../redux/slices/lodingSlice";
+import styles from './movieGenres.module.css'
 interface Props {
     setActiveTVGenre: (genre: number) => void;
 }
@@ -24,13 +25,13 @@ const TVGenres = ({ setActiveTVGenre}: Props) => {
     if (error) return <div>Failed to load tv genres.</div>;
 
 return (
-    <div>
-      <h2>TV Genres</h2>
-      <div>
+    <div className={styles.genres_container}>
+      <div className={styles.genres_list}>
         {genres.map((genre) => (
             <div key={genre.id}>
             <button
-            onClick={() => setActiveTVGenre(genre.id)}>
+             className={styles.genres_btn}
+             onClick={() => setActiveTVGenre(genre.id)}>
                 {genre.name}
             </button>
         </div>
