@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Gupter:wght@400;500;700&display=swap');
+.review {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem 7rem;
+  }
+  
+  .review_list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .review_item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .review_author {
+    font-family: "Gupter", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.4em;
+    color: #673AB7;
+    margin-bottom: 10px;
+  }
+  
+  .review_year {
+    color: #9E9E9E;
+    font-size: .9em;
+    margin-bottom: 10px;
+  }
+  
+  .review_content {
+    font-family: "Gupter", serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: justify;
+    margin-bottom: 10px;
+  }
+  
+  .movie_review_rating {
+    font-weight: bold;
+    color: #FF9800; 
+  }
+  
