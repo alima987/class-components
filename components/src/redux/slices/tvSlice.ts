@@ -5,6 +5,7 @@ export interface TVData {
     vote_average: number,
     poster_path: string,
     name: string,
+    backdrop_path:string
     }
     export interface TVState {
     tvs: TVData[], 

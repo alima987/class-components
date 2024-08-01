@@ -1,6 +1,7 @@
 .movie_app {
     font-family: Arial, sans-serif;
     padding: 20px;
+    overflow: hidden;
   }
 .movies_container {
     max-width: 1200px;

@@ -6,7 +6,8 @@ import { RootState } from "../../redux/store";
 import { setAiringToday } from "../../redux/slices/tvSlice";
 import { useFetchAiringTodayQuery } from "../../services/tvApi";
 import { setLoading } from "../../redux/slices/lodingSlice";
-import Link from 'next/link';
+//import Link from 'next/link';
+import MediaList from "../MediaList/MediaList";
 
 const AiringToday = () => {
 const tvs = useSelector((state: RootState) => state.tvs.AiringToday); 
@@ -27,19 +28,9 @@ if (error) return <div>Failed to load airing today tv shows. {error.toString()}<
 
 return (
     <div className={styles.pop_cont}>
-        <h2>Airing Today</h2>
-        <div className={styles.popular_list}>
-        {tvs.map((el) => (
-            <div key={el.id}>
-                <Link href={`/detail/${el.id}/tvdetail`}>
-                <img src= {`https://image.tmdb.org/t/p/w200${el.poster_path}`}/>
-                <h2>{el.name}</h2>
-                <p>{el.vote_average}</p>
-                </Link>
-            </div>
-        ))}
+            <h2>Airing Today</h2>
+            <MediaList items={tvs} type="tv" styles={{ container: styles.pop_cont, list: styles.popular_list }} />
         </div>
-    </div>
 )
 }
 export default AiringToday 

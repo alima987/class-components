@@ -6,7 +6,7 @@ import { RootState } from "../../redux/store";
 import { setTopRatedTv } from "../../redux/slices/tvSlice";
 import { useFetchTopRatedTVQuery } from "../../services/tvApi";
 import { setLoading } from "../../redux/slices/lodingSlice";
-import Link from 'next/link';
+import MediaList from "../MediaList/MediaList";
 
 const TopRatedTv = () => {
 const tvs = useSelector((state: RootState) => state.tvs.TopRatedTv); 
@@ -27,17 +27,7 @@ if (error) return <div>Failed to load top rated tv shows.</div>;
 return (
     <div className={styles.upcom_cont}>
         <h2>Top Rated TV Shows</h2>
-        <div className={styles.upcom_list}>
-        {tvs.map((el) => (
-            <div key={el.id}>
-                <Link href={`/detail/${el.id}/tvdetail`}>
-                <img src= {`https://image.tmdb.org/t/p/w200${el.poster_path}`}/>
-                <h2>{el.name}</h2>
-                <p>{el.vote_average}</p>
-                </Link>
-            </div>
-        ))}
-        </div>
+        <MediaList items={tvs} type="tv" styles={{ container: styles.upcom_cont, list: styles.upcom_list }} />
     </div>
 )
 }

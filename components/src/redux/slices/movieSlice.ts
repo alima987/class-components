@@ -6,6 +6,7 @@ export interface MovieData {
   vote_average: number,
   poster_path: string,
   title: string,
+  backdrop_path: string
     }
     export interface MovieState {
     nowPlaying: MovieData[], 

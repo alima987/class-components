@@ -6,7 +6,9 @@ import { RootState } from "../../redux/store";
 import { setTopRated } from "../../redux/slices/movieSlice";
 import { useFetchTopRatedQuery } from '../../services/movieApi'
 import { setLoading } from "../../redux/slices/lodingSlice";
-import Link from 'next/link';
+import MediaList from "../MediaList/MediaList";
+
+
 
 const TopRated = () => {
 const movies = useSelector((state: RootState) => state.movies.topRated); 
@@ -22,20 +24,19 @@ useEffect(() => {
 }, [data, queryIsLoading, dispatch])
 if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Failed to load now playing movies.</div>;
+
 return (
     <div className={styles.top_cont}>
         <h2>Top Rated Movies</h2>
-        <div className={styles.toprated_list}>
-        {movies.map((el) => (
-            <div key={el.id}>
-                <Link href={`/detail/${el.id}`}>
-                <img src= {`https://image.tmdb.org/t/p/w200${el.poster_path}`}/>
-                <h2>{el.title}</h2>
-                <p>{el.vote_average}</p>
-                </Link>
-            </div>
-        ))}
-        </div>
+        <MediaList 
+        items={movies} 
+        type="movie" 
+        styles={{ 
+            container: styles.top_cont, 
+            list: styles.toprated_list, 
+            img: styles.toprated_img, 
+            title: styles.toprated_title,
+            vote: styles.toprated_vote }} />
     </div>
 )
 }
