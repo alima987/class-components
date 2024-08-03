@@ -1,16 +1,20 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from "react"
 
-const useSize = () => {
-  const elementRef = useRef<HTMLDivElement | null>(null);
-  const [width, setWidth] = useState(0);
+export default function useWindowWidth() {
 
-  useEffect(() => {
-    if (elementRef.current) {
-        setWidth(elementRef.current.clientWidth);
-      }
-  }, [elementRef.current]);
+    const [width, setWidth] = useState(window.innerWidth)
 
-  return { width, elementRef };
+    const handleResize = () => setWidth(window.innerWidth)
+
+    useEffect(() => {
+
+        window.addEventListener('resize', handleResize)
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        };
+    }, [width])
+
+
+    return width
 }
-
-export default useSize;

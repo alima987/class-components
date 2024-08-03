@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Slider from '../TopRated/Slider/Slider';
 interface MediaItem {
     id: string,
     vote_average: number,

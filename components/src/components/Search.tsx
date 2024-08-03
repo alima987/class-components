@@ -4,6 +4,7 @@ import { useFetchSearchQuery } from "../services/searchApi";
 import { useDispatch } from "react-redux";
 import { setSearch } from "../redux/slices/searchSlice";
 import Link from 'next/link'
+import { RiSearchLine } from "react-icons/ri";
 
  const Search = () => {
     const [value, setValue] = useState('')
@@ -32,7 +33,7 @@ import Link from 'next/link'
                placeholder="type..."
                />
                <Link href="/search">
-                  <button>Search</button>
+               <RiSearchLine />
                </Link>
              </form>
             </div>

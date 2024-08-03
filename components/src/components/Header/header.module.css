@@ -1,0 +1,36 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+    color: white;
+}
+
+.header_menu {
+    display: flex;
+    justify-content: center;
+}
+
+.header_menu a {
+    text-decoration: none;
+}
+
+.header_home, 
+.header_movies, 
+.header_tvs {
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.header_home:hover, 
+.header_movies:hover, 
+.header_tvs:hover {
+    background-color: #61dafb;
+}
+
