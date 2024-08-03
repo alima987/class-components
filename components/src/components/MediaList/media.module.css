@@ -1,20 +1,30 @@
-.sliderArrow {
-    width: 50px;
-    height: 100%;
-    background-color: rgb(22, 22, 22, 0.5);
-    color: white;
-    position: absolute;
-    z-index: 99;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    cursor: pointer;
+.container {
+  width: 100%;
+}
 
-    &.left {
-      left: 0;
-    }
+.list {
+  display: flex;
+}
 
-    &.right {
-      right: 0;
-    }
-  }
+.item {
+  flex: 0 0 calc(25% - 10px); /* Adjust this to fit 4 items within the slider width */
+  margin-right: 10px;
+  scroll-snap-align: start;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.title {
+  font-size: 14px;
+  color: #fff;
+  margin: 5px 0;
+}
+
+.vote {
+  font-size: 12px;
+  color: #fff;
+}

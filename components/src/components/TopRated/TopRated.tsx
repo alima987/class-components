@@ -7,6 +7,7 @@ import { setTopRated } from "../../redux/slices/movieSlice";
 import { useFetchTopRatedQuery } from '../../services/movieApi'
 import { setLoading } from "../../redux/slices/lodingSlice";
 import MediaList from "../MediaList/MediaList";
+import Slider from "./Slider/Slider";
 
 
 
@@ -28,6 +29,7 @@ if (error) return <div>Failed to load now playing movies.</div>;
 return (
     <div className={styles.top_cont}>
         <h2>Top Rated Movies</h2>
+        <Slider>
         <MediaList 
         items={movies} 
         type="movie" 
@@ -37,6 +39,7 @@ return (
             img: styles.toprated_img, 
             title: styles.toprated_title,
             vote: styles.toprated_vote }} />
+        </Slider>
     </div>
 )
 }

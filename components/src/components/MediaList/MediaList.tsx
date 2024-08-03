@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { MdArrowBackIos } from "react-icons/md";
-import { MdArrowForwardIos } from "react-icons/md";
+import Slider from '../TopRated/Slider/Slider';
 interface MediaItem {
     id: string,
     vote_average: number,
@@ -26,7 +25,6 @@ interface MediaListProps {
 const MediaList = ({ items, type, styles }: MediaListProps) => {
     return (
         <div className={styles.container}>
-             <MdArrowBackIos  className="sliderArrow left"/>
             <div className={styles.list}>
                 {items.map((item) => (
                     <div key={item.id}>
@@ -38,7 +36,6 @@ const MediaList = ({ items, type, styles }: MediaListProps) => {
                     </div>
                 ))}
             </div>
-            <MdArrowForwardIos className="sliderArrow right"/>
         </div>
     );
 };

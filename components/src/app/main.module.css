@@ -1,7 +1,9 @@
+@import url('slick-carousel/slick/slick.css');
+@import url('slick-carousel/slick/slick-theme.css');
+
 .movie_app {
     font-family: Arial, sans-serif;
     padding: 20px;
-    overflow: hidden;
   }
 .movies_container {
     max-width: 1200px;
