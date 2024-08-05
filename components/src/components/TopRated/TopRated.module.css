@@ -48,13 +48,19 @@
 .toprated_item {
     min-width: 230px; 
     margin-right: 10px; 
+    overflow: hidden;
+    position: relative; 
 }
 
 .toprated_image {
     width: 100%;
     height: auto;
+    transition: transform 0.3s ease;
+    display: block;
 }
-
+.toprated_item:hover .toprated_image {
+    transform: scale(1.2); 
+}
 .toprated_title, .toprated_vote {
     color: white;
 }
