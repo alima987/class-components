@@ -1,2 +1,60 @@
+.top_cont {
+    width: 100%;
+    margin-top: 10px;
+}
+.top_title {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 50px;
+}
 
-  
+.top_wrapper {
+    position: relative;
+    overflow: hidden;
+    width: calc(5 * 230px + 40px);
+    margin: 0 auto;
+}
+
+.sliderArrow {
+    width: 50px;
+    height: 100%;
+    background-color: rgba(22, 22, 22, 0.5);
+    color: white;
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.toprated_list {
+    display: flex;
+    margin-top: 10px;
+    transform: translateX(0px);
+    transition: all 1s ease;
+    width: 100%;
+}
+
+.toprated_item {
+    min-width: 230px; 
+    margin-right: 10px; 
+}
+
+.toprated_image {
+    width: 100%;
+    height: auto;
+}
+
+.toprated_title, .toprated_vote {
+    color: white;
+}
