@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from './Slider.module.css';
 import { MdArrowForwardIos, MdArrowBackIos } from "react-icons/md";
 import { MovieData } from "../../redux/slices/movieSlice";
+import { TVData } from "../../redux/slices/tvSlice";
 
 interface SliderProps {
-  items: MovieData[];
+  items: MovieData[] | TVData[];
   children: React.ReactNode;
 }
 
@@ -22,9 +23,9 @@ const Slider = ({ items, children}: SliderProps) => {
 
     if (listRef.current && items.length) {
       const containerWidth = listRef.current.clientWidth;
-      const itemWidth = (listRef.current.firstElementChild as HTMLElement)?.clientWidth || 0;
+      const itemWidth = (listRef.current.querySelector('.item') as HTMLElement)?.clientWidth || 230;
       const totalInViewport = Math.ceil(containerWidth / itemWidth);
-
+    
       setContainerWidth(containerWidth);
       setTotalInViewport(totalInViewport);
     }
@@ -51,14 +52,13 @@ const Slider = ({ items, children}: SliderProps) => {
   };
 
   return (
-    <div className={styles.top_cont}>
-      <div className={styles.top_wrapper}>
+      <>
         <MdArrowBackIos 
           className={`${styles.sliderArrow} ${styles.left}`}
           onClick={() => handleClick("left")}
           style={{ display: !isMoved ? "none" : "block" }}
         />
-        <div className={styles.toprated_list} ref={listRef}>
+        <div ref={listRef}>
         {children}
         </div>
         <MdArrowForwardIos 
@@ -66,8 +66,7 @@ const Slider = ({ items, children}: SliderProps) => {
           onClick={() => handleClick("right")}
           style={{ display: slideNumber >= Math.floor(items.length / totalInViewport) ? "none" : "block" }}
         />
-      </div>
-    </div>
+      </>
   );
 }
 

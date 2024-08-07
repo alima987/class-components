@@ -13,8 +13,9 @@ interface MediaListProps {
     items: MediaItem[];
     type: 'movie' | 'tv';
     styles: {
-        container: string;
-        list: string;
+        imageContainer: string;
+        info: string;
+        item: string;
         img: string;
         title: string;
         vote: string;
@@ -23,19 +24,21 @@ interface MediaListProps {
 
 const MediaList = ({ items, type, styles }: MediaListProps) => {
     return (
-        <div className={styles.container}>
-            <div className={styles.list}>
-                {items.map((item) => (
-                    <div key={item.id}>
-                        <Link href={`/detail/${item.id}/${type === 'tv' ? 'tvdetail' : ''}`}>
+        <>
+        {items.map((item) => (
+                <div key={item.id} className={styles.item}>
+                    <Link href={`/detail/${item.id}/${type === 'tv' ? 'tvdetail' : ''}`}>
+                    <div className={styles.imageContainer}>
                             <img src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`} alt={item.name || item.title} className={styles.img}/>
-                            <h2 className={styles.title}>{item.name || item.title}</h2>
-                            <p className={styles.vote}>{item.vote_average}</p>
-                        </Link>
+                            <div className={styles.info}>
+                                <h2 className={styles.title}>{item.name || item.title}</h2>
+                                <p className={styles.vote}>{item.vote_average}</p>
+                            </div>
                     </div>
-                ))}
-            </div>
-        </div>
+                    </Link>
+                </div>
+            ))}
+        </>
     );
 };
 

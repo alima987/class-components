@@ -4,6 +4,8 @@
 .movie_app {
     font-family: Arial, sans-serif;
     padding: 20px;
+    max-width: 1280px;
+    margin: 0 auto;
   }
 .movies_container {
     margin: 0 auto;

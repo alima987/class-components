@@ -1,6 +1,6 @@
 import React from "react"
 import Link from 'next/link'
-import Search from "../Search"
+import Search from "../Search/Search"
 import styles from './header.module.css'
 
 const Header = () => {

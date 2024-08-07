@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from "react"
-import styles from './AiringToday.module.css'
+import styles from '../styles/moviesTvs.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { setAiringToday } from "../../redux/slices/tvSlice";
@@ -8,6 +8,7 @@ import { useFetchAiringTodayQuery } from "../../services/tvApi";
 import { setLoading } from "../../redux/slices/lodingSlice";
 //import Link from 'next/link';
 import MediaList from "../MediaList/MediaList";
+import Slider from "../Slider/Slider";
 
 const AiringToday = () => {
 const tvs = useSelector((state: RootState) => state.tvs.AiringToday); 
@@ -27,10 +28,27 @@ if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Failed to load airing today tv shows. {error.toString()}</div>;
 
 return (
-    <div className={styles.pop_cont}>
-            <h2>Airing Today</h2>
-            <MediaList items={tvs} type="tv" styles={{ container: styles.pop_cont, list: styles.popular_list }} />
+    <div className={styles.cont}>
+        <h2 className={styles.title}>Airing Today</h2>
+        <div className={styles.wrapper}>
+        <Slider items={tvs}>
+        <div className={styles.list}>
+            <MediaList
+            items={tvs}
+            type="tv"
+            styles={{
+              imageContainer: styles.image_cont,
+              info: styles.info,
+              item: styles.item,
+              img: styles.image,
+              title: styles.item_title,
+              vote: styles.vote,
+          }}
+        />
         </div>
+        </Slider>
+        </div>
+    </div>
 )
 }
 export default AiringToday 

@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 30rem;
     padding: 1rem;
     color: white;
 }
@@ -31,6 +32,6 @@
 .header_home:hover, 
 .header_movies:hover, 
 .header_tvs:hover {
-    background-color: #61dafb;
+    text-decoration: underline;
 }
 

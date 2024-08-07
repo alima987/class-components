@@ -27,7 +27,7 @@ if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Failed to load now playing movies.</div>;
 return (
     <div className={styles.nowPlay_cont}>
-        <h2>Now Playing</h2>
+        <h2 className={styles.title}>Now Playing</h2>
         <div className={styles.nowPlay_list}>
         <Carousel
           className="carousel"

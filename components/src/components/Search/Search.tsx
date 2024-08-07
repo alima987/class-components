@@ -1,10 +1,11 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import { useFetchSearchQuery } from "../services/searchApi";
+import { useFetchSearchQuery } from "../../services/searchApi";
 import { useDispatch } from "react-redux";
-import { setSearch } from "../redux/slices/searchSlice";
+import { setSearch } from "../../redux/slices/searchSlice";
 import Link from 'next/link'
 import { RiSearchLine } from "react-icons/ri";
+import styles from './search.module.css'
 
  const Search = () => {
     const [value, setValue] = useState('')
@@ -24,16 +25,17 @@ import { RiSearchLine } from "react-icons/ri";
         setValue(e.target.value)
     }
         return (
-        <div>
-            <div>
-            <form>
+        <div className={styles.container}>
+            <div className={styles.wrapper}>
+            <form className={styles.form}>
                <input 
                type="text"
                onChange={handleChange}
-               placeholder="type..."
+               placeholder="search..."
+               className={styles.input}
                />
                <Link href="/search">
-               <RiSearchLine />
+               <RiSearchLine className={styles.search_icon}/>
                </Link>
              </form>
             </div>

@@ -9,6 +9,7 @@ import { setLoading } from "../../redux/slices/lodingSlice";
 import Link from 'next/link';
 import Pagination from "../../components/Pagination/Pagination";
 import styles from './tv.module.css'
+import { LiaStarSolid } from "react-icons/lia";
 
 const TVShows = () => {
     const [activeTVGenre, setActiveTVGenre] = useState(10759)
@@ -42,8 +43,13 @@ return (
                 <div key={tv.id} className={styles.tv_list_item}>
                     <Link href={`/detail/${tv.id}/tvdetail`}>
                     <img src= {`https://image.tmdb.org/t/p/w500${tv.poster_path}`} className={styles.tv_img}/>
+                    <div className={styles.tv_list_body}>
                     <h5 className={styles.tv_list_title}>{tv.name}</h5>
+                    <div className={styles.tv_list_rate}>
+                    <LiaStarSolid />
                     <p className={styles.tv_list_vote}>{tv.vote_average}</p>
+                    </div>
+                    </div>
                     </Link>
                 </div>
             ))}

@@ -4,8 +4,8 @@
     display: flex;
     flex-direction: column;
     padding: 1.5rem 7rem;
-    max-width: 1200px;
-    margin: auto;
+    max-width: 1280px;
+    margin: 0 auto;
   }
   
   .movie_detail {

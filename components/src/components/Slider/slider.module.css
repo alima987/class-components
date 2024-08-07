@@ -1,15 +1,4 @@
-.top_cont {
-    width: 100%;
-    margin-top: 10px;
-}
-.top_title {
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
-    margin-left: 50px;
-}
-
-.top_wrapper {
+.wrapper {
     position: relative;
     overflow: hidden;
     width: calc(5 * 230px + 40px);
@@ -37,37 +26,5 @@
     right: 0;
 }
 
-.toprated_list {
-    display: flex;
-    margin-top: 10px;
-    transform: translateX(0px);
-    transition: all 1s ease;
-    width: 100%;
-}
-
-.toprated_item {
-    min-width: 230px; 
-    margin-right: 10px; 
-    overflow: hidden;
-    position: relative; 
-}
-
-.toprated_image {
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s ease;
-    display: block;
-}
-.toprated_item:hover .toprated_image {
-    transform: scale(1.2); 
-}
-.toprated_title, .toprated_vote {
-    color: white;
-}
 
 
-
-  
-  
-  
-  
