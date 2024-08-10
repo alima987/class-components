@@ -37,6 +37,7 @@ return (
         <h2 className={styles.tv_title}>TVShows</h2>
         <TVGenres 
         setActiveTVGenre={setActiveTVGenre}
+        activeTVGenre={activeTVGenre}
         />
         <div className={styles.tv_list} >
             {tvs.map((tv) => (

@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import StoreProvider from './StoreProvider'
 import Header from '../components/Header/Header' 
 import './styles/global.css'
+import Footer from '../components/Footer/Footer'
 
 export const metadata: Metadata = {
   title: 'Movie & TV app',
@@ -20,7 +21,10 @@ export default function RootLayout({
         <body>
           <div id="root">
             <Header />
-            {children}
+            <main>
+              {children}
+            </main>
+            <Footer />
           </div>
         </body>
       </html>

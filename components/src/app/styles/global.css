@@ -1,15 +1,35 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
+html, body {
+    height: 100%;
+}
+
 body {
     background: #141414;
-	color: #ffffff;
+    color: #ffffff;
     width: 100%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
+
 a {
     text-decoration: none;
+}
 
+#root  {
+    display: flex;
+    flex-direction: column;
+    flex: 1; 
+}
+footer {
+    margin-top: auto;
+}
+
+main {
+    flex: 1;
 }

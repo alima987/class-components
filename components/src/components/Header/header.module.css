@@ -11,6 +11,7 @@
 .header_menu {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .header_menu a {
@@ -33,5 +34,16 @@
 .header_movies:hover, 
 .header_tvs:hover {
     text-decoration: underline;
+}
+.active {
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    text-decoration: underline;
+    color: white;
 }
 

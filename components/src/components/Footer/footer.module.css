@@ -1,0 +1,31 @@
+.footer {
+    display: flex; 
+    justify-content: center; 
+    gap: 1.5rem; 
+    align-items: center; 
+    padding: 2rem; 
+    background-color: #282c34;
+}
+
+.github {
+    color: #ffffff; 
+    font-size: 2rem; /* Увеличиваем размер шрифта иконки */
+    margin: 0; 
+    transition: color 0.3s ease; /* Плавный переход для цвета */
+}
+
+.icon {
+    width: 2rem; /* Устанавливаем ширину иконки */
+    height: 2rem; /* Устанавливаем высоту иконки */
+}
+
+.github:hover {
+    color: #61dafb; /* Изменяем цвет при наведении */
+}
+
+.year {
+    font-size: 1.2rem; /* Немного увеличиваем размер шрифта */
+    color: #ffffff; /* Цвет шрифта */
+    margin: 0; 
+}
+

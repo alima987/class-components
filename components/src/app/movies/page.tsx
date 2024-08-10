@@ -38,6 +38,7 @@ return (
         <h2 className={styles.movie_title}>Movies</h2>
         <Genres 
         setActiveGenre={setActiveGenre}
+        activeGenre = {activeGenre}
         />
         <div className={styles.movie_list}>
         {movies.map((el) => (

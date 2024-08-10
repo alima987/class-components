@@ -7,8 +7,9 @@ import { setLoading } from "../../redux/slices/lodingSlice";
 import styles from './movieGenres.module.css'
 interface Props {
     setActiveGenre: (genre: number) => void;
+    activeGenre: number
 }
-const Genres = ({ setActiveGenre }: Props) => {
+const Genres = ({ setActiveGenre, activeGenre }: Props) => {
     const genres = useSelector((state: RootState) => state.genres.movieGenre);
     const isLoading = useSelector((state: RootState) => state.loading.isLoading)
     const dispatch = useDispatch()
@@ -30,7 +31,7 @@ return (
        {genres.map((genre) => (
         <div key={genre.id}>
             <button
-            className={styles.genres_btn}
+            className={`${styles.genres_btn} ${activeGenre === genre.id ? styles.active_btn : ''}`}
             onClick={() => setActiveGenre(genre.id)}>
                 {genre.name}
             </button>
