@@ -44,4 +44,34 @@
   .active_btn {
     color: rgb(95, 94, 94);
   }
+  @media (min-width: 780px) and (max-width: 1279px) {
+    .genres_container {
+      padding: 1.5rem;
+    }
   
+    .genres_list {
+      width: 90vw;
+    }
+  
+    .genres_btn {
+      font-size: 1em;
+      margin: 0.4rem;
+      padding: 0.4rem 0.8rem;
+    }
+  }
+  
+  @media (min-width: 320px) and (max-width: 779px) {
+    .genres_container {
+      padding: 1rem;
+    }
+  
+    .genres_list {
+      width: 100vw;
+    }
+  
+    .genres_btn {
+      font-size: 0.9em;
+      margin: 0.3rem;
+      padding: 0.3rem 0.6rem;
+    }
+  }

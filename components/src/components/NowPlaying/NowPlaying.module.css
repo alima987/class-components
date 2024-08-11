@@ -90,15 +90,16 @@
     opacity: 1; 
   }
 
-  @media (min-width: 1280px) {
-  }
-@media ((min-width: 780px) and (max-width: 1280px)) {
+
+@media ((min-width: 780px) and (max-width: 1279px)) {
+  .title {
+    font-size: 1.2rem; 
+}
+}
+@media ((min-width: 320px) and (max-width: 779px)) {
+  .title {
+    font-size: 1rem; 
   
 }
-@media ((min-width: 320px) and (max-width: 780px)) {
-  
 }
 
-@media (max-width: 320px) {
-  
-}

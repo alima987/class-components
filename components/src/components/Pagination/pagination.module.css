@@ -46,3 +46,43 @@
 .pagination .disabled a:hover {
     background-color: rgba(255, 255, 255, 0.17); 
 }
+@media (min-width: 780px) and (max-width: 1279px) {
+    .pagination {
+        margin: 15px 0;
+    }
+
+    .pagination a {
+        padding: 6px 12px;
+        margin: 0 3px;
+        font-size: 12px;
+    }
+
+    .pagination .active a {
+        font-size: 0.9rem;
+    }
+
+    .pagination .break-me {
+        padding: 6px 12px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 779px) {
+    .pagination {
+        margin: 10px 0;
+        padding: 0 5px;
+    }
+
+    .pagination a {
+        padding: 4px 8px;
+        margin: 0 2px;
+        font-size: 10px;
+    }
+
+    .pagination .active a {
+        font-size: 0.8rem;
+    }
+
+    .pagination .break-me {
+        padding: 4px 8px;
+    }
+}

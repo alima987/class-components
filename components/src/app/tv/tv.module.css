@@ -113,3 +113,50 @@
 .tv_list_title, .tv_list_rate {
     text-align: center;
 }
+
+@media (min-width: 780px) and (max-width: 1279px) {
+  .tv_title {
+      font-size: 1.75rem;
+  }
+
+  .tv_list {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      width: 95%;
+  }
+
+  .tv_list_title {
+      font-size: 1rem;
+      margin: 12rem .5rem .5rem;
+  }
+
+  .tv_list_item {
+      width: 200px;
+      height: 300px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 779px) {
+  .tv_title {
+      font-size: 1.5rem;
+  }
+
+  .tv_list {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      width: 100%;
+      padding: 0.5rem;
+  }
+
+  .tv_list_title {
+      font-size: 0.85rem;
+      margin: 8rem .5rem .5rem;
+  }
+
+  .tv_list_item {
+      width: 150px;
+      height: 225px;
+  }
+
+  .tv_img {
+      height: auto;
+  }
+}
