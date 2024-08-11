@@ -9,23 +9,23 @@
 
 .github {
     color: #ffffff; 
-    font-size: 2rem; /* Увеличиваем размер шрифта иконки */
+    font-size: 2rem; 
     margin: 0; 
-    transition: color 0.3s ease; /* Плавный переход для цвета */
+    transition: color 0.3s ease; 
 }
 
 .icon {
-    width: 2rem; /* Устанавливаем ширину иконки */
-    height: 2rem; /* Устанавливаем высоту иконки */
+    width: 2rem;
+    height: 2rem;
 }
 
 .github:hover {
-    color: #61dafb; /* Изменяем цвет при наведении */
+    color: #61dafb; 
 }
 
 .year {
-    font-size: 1.2rem; /* Немного увеличиваем размер шрифта */
-    color: #ffffff; /* Цвет шрифта */
+    font-size: 1.2rem; 
+    color: #ffffff;
     margin: 0; 
 }
 

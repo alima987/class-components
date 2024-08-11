@@ -6,7 +6,6 @@ import { RootState } from "../../redux/store";
 import { setAiringToday } from "../../redux/slices/tvSlice";
 import { useFetchAiringTodayQuery } from "../../services/tvApi";
 import { setLoading } from "../../redux/slices/lodingSlice";
-//import Link from 'next/link';
 import MediaList from "../MediaList/MediaList";
 import Slider from "../Slider/Slider";
 
