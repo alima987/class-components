@@ -48,7 +48,7 @@ return (
                 <div className={styles.movie_list_body}>
                 <h5 className={styles.movie_list_title}>{el.title}</h5>
                 <div className={styles.movie_list_rate}>
-                <LiaStarSolid />
+                <LiaStarSolid className={styles.star}/>
                 <p className={styles.movie_list_vote}>{el.vote_average}</p>
                 </div>
                 </div>

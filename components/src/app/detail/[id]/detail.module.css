@@ -3,8 +3,8 @@
 .movie_detail_Container {
     display: flex;
     flex-direction: column;
-    padding: 1.5rem 7rem;
-    max-width: 1280px;
+    padding: 5rem 7rem;
+    max-width: 1920px;
     margin: 0 auto;
   }
   
@@ -14,18 +14,18 @@
     padding-bottom: 20px;
     display: flex;
     flex-wrap: nowrap;
-    gap: 94px;
+    gap: 7vw;
   }
   
   .movie_detail_title {
     font-family: "Gupter", serif;
-    font-size: 2em;
+    font-size: 3em;
     font-weight: bold;
     margin-bottom: 10px;
   }
   
   .movie_detail_img {
-    width: 200px;
+    width: 16vw;
     height: auto;
     border-radius: 8px;
     margin-bottom: 10px;
@@ -38,10 +38,16 @@
     padding: 5px 10px;
     border-radius: 4px;
     font-weight: bold;
-    margin-bottom: 10px;
-    font-size: 1.7em;
+    font-size: 3em;
   }
-  
+  .star {
+    font-size: 2rem;
+  }
+  .rate {
+    display: flex;
+    align-items: center;
+    
+  }
   .movie_detail_year {
     font-style: italic;
     margin-bottom: 10px;
@@ -73,18 +79,20 @@
   
   .movie_cast_list div {
     text-align: center;
-    max-width: 120px;
+    max-width: 10vw;
   }
   .movie_cast_name {
     font-family: "Gupter", serif;
     font-weight: 400;
     font-style: normal;
+    font-size: 2em;
   }
   .movie_cast_character {
     font-family: "EB Garamond", serif;
     font-weight: 300;
     font-style: normal;
     color: #b8b7b7;
+    font-size: 2em;
   }
   .movie_cast_list img {
     width: 100%;
@@ -104,15 +112,16 @@
     font-weight: 400;
     font-style: normal;
     text-align: justify;
-    
+    font-size: 2em;
   }
 .movie_detail_value {
     font-family: "Gupter", serif;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 388px;
+    width: 31vw;
     text-align: justify;
+    font-size: 2em;
 }
 .movie_review_list {
     display: flex;
@@ -133,7 +142,7 @@
 .movie_detail_info {
     display: grid;
     grid-template-columns: auto 1fr; 
-    gap: 16px; 
+    gap: 45px; 
 }
 
 .movie_detail_item {
@@ -147,6 +156,7 @@
     display: flex;
     align-items: center;
     width: 83px;
+    font-size: 2em;
 }
 .movie_review_author {
   font-family: "Gupter", serif;
@@ -155,9 +165,109 @@
   font-size: 1.4em;
   color: #673AB7;
   margin-bottom: 10px;
+  font-size: 2.5em;
 }
 .movie_review_year {
   color: #9E9E9E;
   font-size: .9em;
   margin-bottom: 10px;
+  font-size: 1.5em;
+}
+.link_cast, .link_review{
+  font-size: 1.8em;
+}
+
+@media (min-width: 780px) and (max-width: 1279px) {
+  
+  .movie_detail {
+    gap: 7vw;
+  }
+  
+  .movie_detail_title {
+    font-size: 1.8em;
+  }
+  
+  .movie_detail_img {
+    width: 20vw;
+  }
+.movie_detail_vote {
+  font-size: 1.3em;
+}
+.movie_cast_list div {
+  max-width: 12vw;
+}
+
+.movie_detail_value {
+  width: 37vw;
+}
+.movie_review_list {
+  gap: 13px;
+}
+.movie_detail_label {
+  width: 70px;
+}
+.movie_review_author {
+font-size: 1.2em;
+}
+.movie_review_year {
+font-size: .8em;
+}
+.movie_review_content {
+  font-size: 1rem;
+  
+}
+}
+
+@media (min-width: 320px) and (max-width: 779px) {
+  .movie_detail_Container {
+    padding: 2rem;
+  }
+  .movie_detail {
+    gap: 4vw;
+  }
+  
+  .movie_detail_title {
+    font-size: 1.5em;
+  }
+  
+  .movie_detail_img {
+    width: 23vw
+  }
+.movie_detail_vote {
+  font-size: 1.1em;
+}
+.movie_cast_list div {
+  max-width: 10vw;
+}
+.movie_detail_info {
+  gap: 2px; 
+}
+.movie_detail_value {
+  width: 30vw;
+  font-size: .8rem;
+}
+.movie_review_list {
+  gap: 13px;
+}
+.movie_detail_label {
+  width: 65px;
+  font-size: .9rem;
+}
+.movie_review_author {
+font-size: 1em;
+}
+.movie_review_year {
+font-size: .7em;
+}
+.movie_review_content {
+  font-size: .9rem;
+  
+}
+.movie_cast_name {
+  font-size: .8rem;
+}
+.movie_cast_character {
+  font-size: .8rem;
+}
+
 }

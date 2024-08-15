@@ -11,21 +11,20 @@ const TopRatedTv = React.lazy(() => import("../components/TopRatedTv/TopRatedTv"
 const Main = () => {
     return (
         <ErrorBoundary>
+            <Suspense fallback={<div>Loading...</div>}>
             <div className={styles.movie_app}>
                 <div className={styles.movies_container}>
                     <div className={styles.movies}>
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <NowPlaying />
-                            <TopRated />
-                            <AiringToday />
-                            <TopRatedTv />
-                        </Suspense>
+                        <NowPlaying />
+                        <TopRated />
+                        <AiringToday />
+                        <TopRatedTv />
                     </div>
                 </div>
             </div>
+            </Suspense>
         </ErrorBoundary>
     );
 }
 
 export default Main;
-

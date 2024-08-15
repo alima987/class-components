@@ -1,10 +1,14 @@
 .wrapper {
     position: relative;
     overflow: hidden;
-    width: calc(5 * 230px + 40px);
     margin: 0 auto;
 }
-
+.slider {
+    z-index: 2;
+    position: relative;
+    margin: 0 auto;
+    padding: 0 0%;
+}
 .sliderArrow {
     width: 50px;
     height: 100%;

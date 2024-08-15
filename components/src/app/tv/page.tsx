@@ -47,7 +47,7 @@ return (
                     <div className={styles.tv_list_body}>
                     <h5 className={styles.tv_list_title}>{tv.name}</h5>
                     <div className={styles.tv_list_rate}>
-                    <LiaStarSolid />
+                    <LiaStarSolid className={styles.star}/>
                     <p className={styles.tv_list_vote}>{tv.vote_average}</p>
                     </div>
                     </div>

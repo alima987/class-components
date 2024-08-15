@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from './Slider.module.css';
+import styles from './slider.module.css';
 import { MdArrowForwardIos, MdArrowBackIos } from "react-icons/md";
 import { MovieData } from "../../redux/slices/movieSlice";
 import { TVData } from "../../redux/slices/tvSlice";
@@ -23,7 +23,7 @@ const Slider = ({ items, children}: SliderProps) => {
 
     if (listRef.current && items.length) {
       const containerWidth = listRef.current.clientWidth;
-      const itemWidth = (listRef.current.querySelector('.item') as HTMLElement)?.clientWidth || 230;
+      const itemWidth = (listRef.current.querySelector('.item') as HTMLElement)?.clientWidth || 300;
       const totalInViewport = Math.ceil(containerWidth / itemWidth);
     
       setContainerWidth(containerWidth);
@@ -58,7 +58,7 @@ const Slider = ({ items, children}: SliderProps) => {
           onClick={() => handleClick("left")}
           style={{ display: !isMoved ? "none" : "block" }}
         />
-        <div ref={listRef}>
+        <div ref={listRef} className={styles.slider}>
         {children}
         </div>
         <MdArrowForwardIos 

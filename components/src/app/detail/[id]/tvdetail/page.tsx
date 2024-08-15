@@ -34,8 +34,10 @@ return (
       <div className={styles.movie_detail}>
         <div className={styles.movie_detail_img}>
            <img src={tv.poster_path ? `https://image.tmdb.org/t/p/w500${tv.poster_path}` : noPhoto.src}  className={styles.movie_detail_img}/>
-           <RxStarFilled />
-           <span className={styles.movie_detail_vote}>{tv.vote_average}</span>
+           <div className={styles.rate}>
+                <RxStarFilled className={styles.star} />
+                <span className={styles.movie_detail_vote}>{tv.vote_average}</span>
+                </div>
         </div>
         <div className={styles.movie_detail_info}>
           <div className={styles.movie_detail_item}>
@@ -78,7 +80,7 @@ return (
                 <p className={styles.movie_cast_character}>{el.character}</p>
             </div>
         ))}</div>
-    <Link href={`/detail/${id}/tvdetail/tvcast`}>{cast.cast.length} actors</Link>
+    <Link href={`/detail/${id}/tvdetail/tvcast`} className={styles.link_cast}>{cast.cast.length} actors</Link>
       </div>
       <div className={styles.movie_review}>
       <div className={styles.movie_review_list}>
@@ -91,7 +93,7 @@ return (
             </div>
         ))}
         </div>
-        <Link href={`/detail/${id}/tvdetail/tvreview`}>{review.results.length} reviews</Link>
+        <Link href={`/detail/${id}/tvdetail/tvreview`} className={styles.link_review}>{review.results.length} reviews</Link>
       </div>
     </section>
 )

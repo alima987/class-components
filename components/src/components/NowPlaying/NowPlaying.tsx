@@ -11,6 +11,8 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Link from "next/link"
 
+
+
 const NowPlaying = () => {
 const movies = useSelector((state: RootState) => state.movies.nowPlaying); 
 const isLoading = useSelector((state: RootState) => state.loading.isLoading)
@@ -25,17 +27,18 @@ useEffect(() => {
 }, [data, queryIsLoading, dispatch])
 if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Failed to load now playing movies.</div>;
+
 return (
     <div className={styles.nowPlay_cont}>
-        <h2 className={styles.title}>Now Playing</h2>
         <div className={styles.nowPlay_list}>
         <Carousel
-          className="carousel"
+          className={styles.carousel}
           showThumbs={false}
-          autoPlay={true}
-          transitionTime={3}
-          infiniteLoop={true}
           showStatus={false}
+          showArrows={false}
+          autoPlay={true}
+          transitionTime={10}
+          infiniteLoop={true}
         >
         {movies.map((el: MovieData) => (
             <div className={styles.nowPlay_item} key={el.id}>
@@ -46,7 +49,7 @@ return (
                 <div className={styles.nowPlay_poster_details}>
                 <h2 className={styles.nowPlay_title}>{el.title}</h2>
                 <div className={styles.nowPlay_vote_details}>
-                <RxStarFilled />
+                <RxStarFilled className={styles.icon}/>
                 <p className={styles.nowPlay_vote}>{el.vote_average}</p>
                 </div>
                 </div>
@@ -59,4 +62,5 @@ return (
 )
 }
 export default NowPlaying
+
 

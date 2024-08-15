@@ -3,38 +3,26 @@
 
 .movie_app {
     font-family: Arial, sans-serif;
-    padding: 20px;
-    max-width: 1280px;
+    padding: 5px;
+    max-width: 1920px;
     margin: 0 auto;
     height: 100%;
   }
 .movies_container {
-    margin: 0 auto;
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    flex-direction: column;
+    margin: 0 auto;
+    overflow-x: hidden;
 }
 .movies {
   margin-bottom: 50px;
 }
 
-@media (min-width: 1280px) {
-  .movies_container {
-      flex-direction: row;
-  }
-
-  .movies {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-  }
-}
-
 
 @media (min-width: 780px) and (max-width: 1279px) {
   .movies_container {
-      flex-direction: row;
-  }
+    flex-direction: column; /* Вертикальное размещение для этого диапазона экранов */
+}
 
   .movies {
       display: flex;
