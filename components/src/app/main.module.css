@@ -17,11 +17,17 @@
 .movies {
   margin-bottom: 50px;
 }
-
+@media only screen and (min-width: 1280px) {
+  .movie_app {
+    padding: 5px;
+    max-width: 100%;
+    height: 100%;
+  }
+}
 
 @media (min-width: 780px) and (max-width: 1279px) {
   .movies_container {
-    flex-direction: column; /* Вертикальное размещение для этого диапазона экранов */
+    flex-direction: column; 
 }
 
   .movies {

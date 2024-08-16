@@ -176,7 +176,10 @@
 .link_cast, .link_review{
   font-size: 1.8em;
 }
+@media ((min-width: 1280px) and (max-width: 1919px))  {
+  
 
+}
 @media (min-width: 780px) and (max-width: 1279px) {
   
   .movie_detail {
@@ -269,5 +272,10 @@ font-size: .7em;
 .movie_cast_character {
   font-size: .8rem;
 }
-
+.link_cast, .link_review{
+  font-size: .8em;
+}
+.star {
+  font-size: 1.1rem;
+}
 }

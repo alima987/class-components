@@ -20,7 +20,8 @@
     position: relative;
     width: calc(6 * 300px + 0px);
     overflow: hidden;
-    margin: 0;
+    margin: 0 auto;
+    z-index: 0
 }
 
 .list {
@@ -84,29 +85,35 @@
     color: #fff;
     
   }
-
+  @media ((min-width: 1280px) and (max-width: 1919px))  {
+    .cont {
+        padding: 0 2rem; 
+    }
+    .list {
+        overflow-x: scroll;
+        scrollbar-width: none;
+       }
+  }
 @media (min-width: 780px) and (max-width: 1279px) {
-    .wrapper {
-        width: calc(5 * 230px + 40px);
+    .cont {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 0 1rem; 
     }
-    .item {
-        min-width: 200px; 
-    }
-   .list {
-    overflow: scroll;
-   }
+    .list {
+        overflow-x: scroll;
+        scrollbar-width: none;
+       }
 }
 
 @media (min-width: 320px) and (max-width: 779px) {
-    .wrapper {
-        width: calc(5 * 230px + 40px);
-    }
-
-    .item {
-        min-width: 160px; 
-        margin-right: 5px;
+    .cont {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 0 1rem; 
     }
     .list {
-        overflow: scroll;
+        overflow-x: scroll;
+        scrollbar-width: none;
        }
 }

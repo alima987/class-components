@@ -29,7 +29,7 @@
     margin: 0 1rem;
     padding: 0.5rem 1rem;
     color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     border-radius: 4px;
     transition: background-color 0.3s;
@@ -45,7 +45,7 @@
     margin: 0 1rem;
     padding: 0.5rem 1rem;
     color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     border-radius: 4px;
     transition: background-color 0.3s;
@@ -55,7 +55,7 @@
 
 .burger_menu {
     display: none;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     background: none;
     border: none;
     color: white;
@@ -77,7 +77,7 @@
     z-index: 10; 
 }
 .close_menu {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     background: none;
     border: none;
     color: white;
@@ -93,7 +93,7 @@
 
 .mobile_menu p {
     color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     padding: 0.5rem 1rem;
     border-radius: 4px;
@@ -117,12 +117,16 @@
         padding: 0.5rem 0.2rem;
         font-size: 1rem;
     }
+    .mobile_menu {
+        display: none;
+    }
 }
 
     @media ((min-width: 320px) and (max-width: 779px)) {
         .header {
-            gap: 0;
-            padding: 0;
+            gap: 10px;
+            padding: 0 2rem;
+            justify-content: flex-start;
         }
         .header_home, 
         .header_movies, 
