@@ -2,12 +2,20 @@
 import React, { Suspense } from 'react';
 import ErrorBoundary from "../components/ErrorBoundary";
 import styles from './main.module.css'
+import dynamic from 'next/dynamic'
 
-const NowPlaying = React.lazy(() => import("../components/NowPlaying/NowPlaying"));
-const TopRated = React.lazy(() => import("../components/TopRated/TopRated"));
-const AiringToday = React.lazy(() => import("../components/AiringToday/AiringToday"));
-const TopRatedTv = React.lazy(() => import("../components/TopRatedTv/TopRatedTv"));
-
+const NowPlaying = dynamic(() => import("../components/NowPlaying/NowPlaying"), {
+    ssr: false,
+  });
+const TopRated = dynamic(() => import("../components/TopRated/TopRated"), {
+    ssr: false,
+  });
+const AiringToday = dynamic(() => import("../components/AiringToday/AiringToday"), {
+    ssr: false,
+  });
+const TopRatedTv = dynamic(() => import("../components/TopRatedTv/TopRatedTv"), {
+    ssr: false,
+  });
 const Main = () => {
     return (
         <ErrorBoundary>
