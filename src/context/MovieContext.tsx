@@ -1,4 +1,4 @@
-import React, { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, useState } from "react";
 import { createContext } from "react";
 interface MovieProviderProps {
     children: ReactNode;
@@ -19,7 +19,7 @@ interface MovieProviderProps {
   })
 const MovieProvider = ({ children }: MovieProviderProps) => {
     const [activeGenre, setActiveGenre] = useState(28)
-    const [page, setPage] = useState<number>(1)
+    const [/*page*/, setPage] = useState<number>(1)
     const [activeTVGenre, setActiveTVGenre] = useState(10759)
     const handlePageChange = (selectedItem: { selected: number }) => {
       setPage(selectedItem.selected + 1); 

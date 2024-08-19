@@ -1,4 +1,3 @@
-import React from 'react'
 import type { Metadata } from 'next'
 import StoreProvider from './StoreProvider'
 import Header from '../components/Header/Header' 

@@ -1,8 +1,7 @@
-import React from "react";
 import { DetailData } from "../../../../utils/interfaces";
-import { DetailProps, getCastDetail } from "../page";
 import styles from './cast.module.css'
 import noPhoto from '../../../../../public/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'
+import { DetailProps, getCastDetail } from "../../../../utils/movieDetailApis";
 
 const FullCast = async ({ params }: DetailProps) => {
     const { id } = params

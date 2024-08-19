@@ -1,6 +1,5 @@
-import React from "react";
 import { TVDetailData } from "../../../../../utils/interfaces";
-import { getReviewTVDetail, TVDetailProps } from "../page";
+import { getReviewTVDetail, TVDetailProps } from "../../../../../utils/tvDetailApis";
 import styles from '../../review/review.module.css'
 
 const FullTVReview = async({params}: TVDetailProps) => {

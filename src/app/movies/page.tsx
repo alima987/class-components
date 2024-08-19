@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { setPopular } from "../../redux/slices/movieSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";

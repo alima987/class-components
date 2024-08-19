@@ -1,5 +1,5 @@
 "use client"
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import ErrorBoundary from "../components/ErrorBoundary";
 import styles from './main.module.css'
 import dynamic from 'next/dynamic'

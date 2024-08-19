@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from './slider.module.css';
 import { MdArrowForwardIos, MdArrowBackIos } from "react-icons/md";
 import { MovieData } from "../../redux/slices/movieSlice";

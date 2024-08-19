@@ -1,8 +1,7 @@
-import React from "react";
 import { TVDetailData } from "../../../../../utils/interfaces";
-import { getCastTVDetail, TVDetailProps } from "../page";
 import styles from '../../cast/cast.module.css'
 import noPhoto from '../../../../../../public/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'
+import { getCastTVDetail, TVDetailProps } from "../../../../../utils/tvDetailApis";
 
 const FullTVCast = async ({ params }: TVDetailProps) => {
     const { id } = params

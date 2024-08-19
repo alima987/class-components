@@ -1,5 +1,5 @@
 "use client"
-import React, { Component } from "react";
+import { Component } from "react";
 
 interface Props {
     children: React.ReactNode;

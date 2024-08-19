@@ -1,6 +1,5 @@
-import React from "react";
 import { DetailData } from "../../../../utils/interfaces";
-import { DetailProps, getReviewDetail } from "../page";
+import { DetailProps, getReviewDetail } from "../../../../utils/movieDetailApis";
 import styles from './review.module.css'
 
 const FullReview = async({params}: DetailProps) => {

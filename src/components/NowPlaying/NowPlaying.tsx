@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import styles from './NowPlaying.module.css'
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../../redux/store"

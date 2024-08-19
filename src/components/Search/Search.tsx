@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useFetchSearchQuery } from "../../services/searchApi";
 import { useDispatch } from "react-redux";
 import { setSearch } from "../../redux/slices/searchSlice";
@@ -9,7 +9,7 @@ import styles from './search.module.css'
 
  const Search = () => {
     const [value, setValue] = useState('')
-    const [page, setPage] = useState<number>(1)
+    const [page] = useState<number>(1)
     const { data, error, isLoading } = useFetchSearchQuery({searchText: value, page})
     const dispatch = useDispatch()
     useEffect(() => {
