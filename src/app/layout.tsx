@@ -1,13 +1,7 @@
-import type { Metadata } from 'next'
 import StoreProvider from './StoreProvider'
 import Header from '../components/Header/Header' 
 import './styles/global.css'
 import Footer from '../components/Footer/Footer'
-
-export const metadata: Metadata = {
-  title: 'Movie & TV app',
-  description: 'My App is a...',
-}
 
 export default function RootLayout({
     children,
