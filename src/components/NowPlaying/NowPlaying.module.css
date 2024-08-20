@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+.nowPlay_cont {
+    max-width: 1920px;
+    width: 100%; 
+    overflow: hidden; 
+    margin: 0 auto; 
+  }
+  .nowPlay_list {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 0;
+    width: 100%; 
+    height: auto; 
+  }
+  .nowPlay_image{
+    min-width: 1920px; 
+    margin: 0 auto; 
+    background-position: center;
+    background-size: cover;
+    border: 0;
+    height: auto; 
+
+  }
+  .nowPlay_item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .nowPlay_poster {
+    width: 100%;
+    height: auto; 
+    margin: 0 auto;  
+    position: relative;
+  }
+  
+  .nowPlay_poster_details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    padding: 10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .nowPlay_title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0 0 6px 0;
+  }
+  
+  .nowPlay_vote_details {
+    display: flex;
+    gap:10px;
+  }
+  
+  .nowPlay_vote {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .icon {
+    font-size: 2rem;
+  }
+  
+  .carousel .slide {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  }
+  .carousel .carousel-status {
+    display: none; 
+  }
+
+  .carousel .carousel-control-prev,
+  .carousel .carousel-control-next {
+    opacity: 0.7; 
+
+  }
+  
+  .carousel .carousel-control-prev:hover,
+  .carousel .carousel-control-next:hover {
+    opacity: 1; 
+
+  }
+  @media only screen and (min-width: 1921px)  {
+    .nowPlay_image{
+      min-width: 1920px; 
+    }
+
+  }
+  @media ((min-width: 1280px) and (max-width: 1919px))  {
+  
+    .nowPlay_image{
+      min-width: 99vw; 
+    }
+  }
+@media ((min-width: 780px) and (max-width: 1279px))  {
+  .nowPlay_title {
+    font-size: 2rem;
+  }
+  .nowPlay_image{
+    min-width: 99vw; 
+  }
+  .nowPlay_vote {
+    font-size: 1rem;
+  }
+  .icon {
+    font-size: 1rem;
+  }
+}
+
+@media ((min-width: 320px) and (max-width: 779px)) {
+  .nowPlay_title {
+    font-size: 1.1rem;
+  }
+  .nowPlay_vote {
+    font-size: .8rem;
+  }
+  .nowPlay_image{
+    min-width: 99vw; 
+  }
+  .icon {
+    font-size: .8rem;
+  }
+
+}
+

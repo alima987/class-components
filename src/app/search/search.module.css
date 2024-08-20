@@ -1,0 +1,113 @@
+.search {
+    padding: 5rem 3rem;
+    background-color: #000;
+    color: #fff;
+}
+
+.search_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.search_item {
+    position: relative; 
+    background-color: #222;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    width: 250px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.star {
+    font-size: 1.3rem;
+  }
+.search_item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+}
+
+.search_poster {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.search_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.search_rate {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: .5em;
+    align-items: center;
+    justify-content: center;
+}
+.search_text {
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.7); 
+    color: #fff;
+    border-radius: 8px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.search_item:hover .search_text {
+    transform: translateY(0); 
+}
+
+.search_title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+    color: #fff;
+}
+
+.search_year {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin: 0 0 8px 0;
+}
+
+.search_overview {
+    font-size: 0.85rem;
+    color: #ddd;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+.search_vote {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.see_more_btn {
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    margin-bottom: 10px;
+    transition: background 0.3s ease;
+}
+
+.see_more_btn:hover {
+    color: #e55b4b;
+}
+
+

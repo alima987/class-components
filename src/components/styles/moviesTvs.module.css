@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Oswald:wght@200..700&display=swap');
+.cont {
+    width: 100%;
+    height: 100%;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    padding: 0 3rem;
+}
+.title {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(255, 255, 255);
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.wrapper {
+    position: relative;
+    width: calc(6 * 300px + 0px);
+    overflow: hidden;
+    margin: 0 auto;
+    z-index: 0
+}
+
+.list {
+    display: flex;
+    margin-top: 10px;
+    transform: translateX(0px);
+    transition: all 1s ease;
+    width: 100%;
+    height: 100%;
+}
+
+.item {
+    min-width: 300px; 
+    margin-right: 10px; 
+    overflow: hidden;
+    position: relative; 
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+    display: block;
+}
+.item:hover .image {
+    transform: scale(1.2); 
+}
+
+.info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.item:hover .info {
+    transform: translateY(0);
+}
+.image_cont {
+    position: relative;
+    width: 100%;
+}
+.item_title {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.15rem;
+    margin: 0 .5rem 0;
+    text-align: center;
+    color: #fff;
+}
+.vote {
+    font-family: "Oswald", sans-serif;
+    text-align: center;
+    color: #fff;
+    
+  }
+  @media ((min-width: 1280px) and (max-width: 1919px))  {
+    .cont {
+        padding: 0 2rem; 
+    }
+    .list {
+        overflow-x: scroll;
+        scrollbar-width: none;
+       }
+  }
+@media (min-width: 780px) and (max-width: 1279px) {
+    .cont {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 0 1rem; 
+    }
+    .list {
+        overflow-x: scroll;
+        scrollbar-width: none;
+       }
+}
+
+@media (min-width: 320px) and (max-width: 779px) {
+    .cont {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 0 1rem; 
+    }
+    .list {
+        overflow-x: scroll;
+        scrollbar-width: none;
+       }
+}

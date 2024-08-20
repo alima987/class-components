@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Gupter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Gupter:wght@400;500;700&display=swap');
+.movie_detail_Container {
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 7rem;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+  
+  .movie_detail {
+    margin-bottom: 40px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 7vw;
+  }
+  
+  .movie_detail_title {
+    font-family: "Gupter", serif;
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .movie_detail_img {
+    width: 16vw;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .movie_detail_vote {
+    font-family: "Gupter", serif;
+    display: inline-block;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 3em;
+  }
+  .star {
+    font-size: 2rem;
+  }
+  .rate {
+    display: flex;
+    align-items: center;
+    
+  }
+  .movie_detail_year {
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  
+  .movie_detail_genres {
+    margin-bottom: 20px;
+  }
+  
+  .movie_detail_genres p {
+    font-family: "Gupter", serif;
+    display: inline-block;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 5px;
+  }
+  
+  .movie_cast {
+    margin-bottom: 40px;
+  }
+  
+  .movie_cast_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .movie_cast_list div {
+    text-align: center;
+    max-width: 10vw;
+  }
+  .movie_cast_name {
+    font-family: "Gupter", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2em;
+  }
+  .movie_cast_character {
+    font-family: "EB Garamond", serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #b8b7b7;
+    font-size: 2em;
+  }
+  .movie_cast_list img {
+    width: 100%;
+  }
+  
+  .movie_review {
+    margin-bottom: 40px;
+  }
+  
+  .movie_review div {
+    margin-bottom: 20px;
+  }
+  
+  .movie_review_content {
+    margin: 5px 0;
+    font-family: "Gupter", serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: justify;
+    font-size: 2em;
+  }
+.movie_detail_value {
+    font-family: "Gupter", serif;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 31vw;
+    text-align: justify;
+    font-size: 2em;
+}
+.movie_review_list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: baseline;
+    
+}
+.movie_detail_genres {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie_detail_genres p {
+    margin: 0 8px 0 0; 
+}
+
+.movie_detail_info {
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    gap: 45px; 
+}
+
+.movie_detail_item {
+    display: contents; 
+}
+
+.movie_detail_label {
+    font-family: "Gupter", serif;
+    font-weight: bold;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    width: 83px;
+    font-size: 2em;
+}
+.movie_review_author {
+  font-family: "Gupter", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.4em;
+  color: #673AB7;
+  margin-bottom: 10px;
+  font-size: 2.5em;
+}
+.movie_review_year {
+  color: #9E9E9E;
+  font-size: .9em;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+.link_cast, .link_review{
+  font-size: 1.8em;
+}
+@media ((min-width: 1280px) and (max-width: 1919px))  {
+  
+
+}
+@media (min-width: 780px) and (max-width: 1279px) {
+  
+  .movie_detail {
+    gap: 3vw;
+  }
+  
+  .movie_detail_title {
+    font-size: 1.8em;
+  }
+  
+  .movie_detail_img {
+    width: 25vw;
+  }
+.movie_detail_vote {
+  font-size: 1.5em;
+}
+.star {
+  font-size: 1.5rem;
+}
+.movie_cast_list div {
+  max-width: 12vw;
+}
+
+.movie_detail_value {
+  width: 37vw;
+  font-size: 1.5em;
+}
+.movie_review_list {
+  gap: 13px;
+}
+.movie_detail_label {
+  width: 70px;
+  font-size: 1.5em;
+}
+.movie_detail_info {
+  gap: 20px; 
+}
+.movie_review_author {
+font-size: 1.2em;
+}
+.movie_review_year {
+font-size: .8em;
+}
+.movie_review_content {
+  font-size: 1.2em;
+  
+}
+.movie_cast_name {
+  font-size: 1.2em;
+}
+.movie_cast_character {
+  font-size: 1.2em;
+}
+}
+
+@media (min-width: 320px) and (max-width: 779px) {
+  .movie_detail_Container {
+    padding: 2rem;
+  }
+  .movie_detail {
+    gap: 4vw;
+  }
+  
+  .movie_detail_title {
+    font-size: 1.5em;
+  }
+  
+  .movie_detail_img {
+    width: 27vw
+  }
+.movie_detail_vote {
+  font-size: 1.1em;
+}
+.movie_cast_list div {
+  max-width: 10vw;
+}
+.movie_detail_info {
+  gap: 2px; 
+}
+.movie_detail_value {
+  width: 30vw;
+  font-size: .8rem;
+}
+.movie_review_list {
+  gap: 13px;
+}
+.movie_detail_label {
+  width: 65px;
+  font-size: .9rem;
+}
+.movie_review_author {
+font-size: 1em;
+}
+.movie_review_year {
+font-size: .7em;
+}
+.movie_review_content {
+  font-size: .9rem;
+  
+}
+.movie_cast_name {
+  font-size: .8rem;
+}
+.movie_cast_character {
+  font-size: .8rem;
+}
+.link_cast, .link_review{
+  font-size: .8em;
+}
+.star {
+  font-size: 1.1rem;
+}
+}
