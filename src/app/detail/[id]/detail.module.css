@@ -183,7 +183,7 @@
 @media (min-width: 780px) and (max-width: 1279px) {
   
   .movie_detail {
-    gap: 7vw;
+    gap: 3vw;
   }
   
   .movie_detail_title {
@@ -191,10 +191,13 @@
   }
   
   .movie_detail_img {
-    width: 20vw;
+    width: 25vw;
   }
 .movie_detail_vote {
-  font-size: 1.3em;
+  font-size: 1.5em;
+}
+.star {
+  font-size: 1.5rem;
 }
 .movie_cast_list div {
   max-width: 12vw;
@@ -202,12 +205,17 @@
 
 .movie_detail_value {
   width: 37vw;
+  font-size: 1.5em;
 }
 .movie_review_list {
   gap: 13px;
 }
 .movie_detail_label {
   width: 70px;
+  font-size: 1.5em;
+}
+.movie_detail_info {
+  gap: 20px; 
 }
 .movie_review_author {
 font-size: 1.2em;
@@ -216,8 +224,14 @@ font-size: 1.2em;
 font-size: .8em;
 }
 .movie_review_content {
-  font-size: 1rem;
+  font-size: 1.2em;
   
+}
+.movie_cast_name {
+  font-size: 1.2em;
+}
+.movie_cast_character {
+  font-size: 1.2em;
 }
 }
 
@@ -234,7 +248,7 @@ font-size: .8em;
   }
   
   .movie_detail_img {
-    width: 23vw
+    width: 27vw
   }
 .movie_detail_vote {
   font-size: 1.1em;
