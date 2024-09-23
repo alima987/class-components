@@ -1,4 +1,4 @@
-# Movies App
+# Movie and TV App
 
 Movie and TV App is a React-based application that allows users to explore and discover information about movies and TV shows. It utilizes the TMDB API to fetch data on both movies and TV shows, offering a variety of features such as search capabilities, detailed views, trending titles, upcoming releases, top-rated content, and cast information.
 
