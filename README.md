@@ -19,6 +19,7 @@ Movie and TV App is a React-based application that allows users to explore and d
 - NextJs
 - Redux Toolkit
 - Context Api
+- RTK Query
 
 ## Installation
 
