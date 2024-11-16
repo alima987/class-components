@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Search from "../Search/Search";
 import styles from './header.module.css';
+import React from "react";
+import NavMenu from "../NavMenu";
 
 const Header = () => {
     const pathname = usePathname();
@@ -17,6 +19,7 @@ const Header = () => {
     };
     return (
         <div className={styles.header}>
+            <NavMenu />
             <div className={styles.header_menu}>
                 <Link href="/">
                     <p className={pathname === '/' ? styles.active : styles.header_home}>Home</p>

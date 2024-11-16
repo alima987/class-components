@@ -3,6 +3,8 @@ import { Suspense } from 'react';
 import ErrorBoundary from "../components/ErrorBoundary";
 import styles from './main.module.css'
 import dynamic from 'next/dynamic'
+import React from 'react';
+import { getSession } from '../auth';
 
 const NowPlaying = dynamic(() => import("../components/NowPlaying/NowPlaying"), {
     ssr: false,
@@ -16,7 +18,8 @@ const AiringToday = dynamic(() => import("../components/AiringToday/AiringToday"
 const TopRatedTv = dynamic(() => import("../components/TopRatedTv/TopRatedTv"), {
     ssr: false,
   });
-const Main = () => {
+const Main = async() => {
+  const session = await getSession()
     return (
         <ErrorBoundary>
             <Suspense fallback={<div>Loading...</div>}>
