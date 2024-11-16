@@ -18,6 +18,7 @@
     );
 };
  const NavMenu = () => {
+    
     return (
         <div>
             <AuthButton />
