@@ -17,7 +17,7 @@ const authOptions: AuthOptions = {
                     return { id: "1", name: "Admin User", email: "admin@example.com" };
                   }
                   return null;
-              }
+                },
         }),
         GithubProvider({
             clientId: process.env.GITHUB_ID ?? '',
