@@ -2,22 +2,43 @@ import { AuthOptions, getServerSession } from "next-auth"
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials"
+import { compare } from "bcrypt";
+import { sql } from "@vercel/postgres";
 
 const authOptions: AuthOptions = {
-    secret: process.env.AUTH_SECRET,
+    session: {
+      strategy: "jwt",
+    },
+    pages: {
+        signIn: '/login',
+    },
+    secret: process.env.NEXTAUTH_SECRET,
     providers: [
         CredentialsProvider({
-            name: 'Credentials',
             credentials: {
-                username: { label: "Username", type: "text", placeholder: "jnsmith" },
-                password: { label: "Password", type: "password" }
+                email: {},
+                password: {}
             },
             async authorize(credentials) {
-                if (credentials?.username === "admin" && credentials?.password === "password") {
-                    return { id: "1", name: "Admin User", email: "admin@example.com" };
-                  }
-                  return null;
-                },
+             const responce = await sql `
+             SELECT * FROM users WHERE email=${credentials?.email}`
+
+             const user = responce.rows[0]
+             if (!user) throw new Error("User not found");
+             const passwordCorrect = await compare(
+                credentials?.password || '',
+                user.password
+            )
+            if (!passwordCorrect) throw new Error("Invalid password");
+            if (passwordCorrect) {
+                return {
+                    id: user.id,
+                    email: user.email
+                }
+            }
+            
+             return null
+            }
         }),
         GithubProvider({
             clientId: process.env.GITHUB_ID ?? '',

@@ -3,16 +3,13 @@ import Form from "./form"
 import React from "react"
 import { redirect } from "next/navigation"
 
-const RegisterPage = async() => {
+ const LoginPage = async() => {
     const  session = await getServerSession()
     if (session) {
         redirect('/')
     }
-
-return (
-    <div>
-        <Form />
-    </div>
-)
-}
-export default RegisterPage
+  return (
+    <Form />
+  )
+ }
+ export default LoginPage

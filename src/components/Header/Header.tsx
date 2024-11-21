@@ -5,12 +5,15 @@ import { usePathname } from 'next/navigation';
 import Search from "../Search/Search";
 import styles from './header.module.css';
 import React from "react";
-import NavMenu from "../NavMenu";
+import NavMenu from "../NavMenu/NavMenu";
 
 const Header = () => {
     const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+    
+    if (pathname === '/register') {
+        return null
+    }
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };

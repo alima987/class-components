@@ -1,5 +1,7 @@
 'use client'
+import React from "react"
 import { FormEvent } from "react"
+import styles from './form.module.css'
 
 const Form = () => {
     const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
@@ -16,48 +18,33 @@ const Form = () => {
        }
    
    return (
-       <form onSubmit={handleSubmit}>
-           <fieldset>
-               <h2>Create account</h2>
-               <div>
-                   <label>
-                       First Name <sup>*</sup>
-                   </label>
-                   <input 
-                   value='firstName'
-                   placeholder="First name" 
+       <form className={styles.form} onSubmit={handleSubmit}>
+               <h2 className={styles.formTitle}>Create account</h2>
+                  <input 
+                   className={styles.input}
+                   name="name"
+                   type="name"
+                   placeholder="Name" 
                    />
-               </div>
-               <div>
-                   <label>
-                       Second Name <sup>*</sup>
-                   </label>
                    <input 
-                   placeholder="Second name" 
-                   />
-               </div>
-               <div>
-                   <label>
-                   Email <sup>*</sup>
-                   </label>
-                   <input 
+                   className={styles.input}
                    name="email"
                    type="email"
                    placeholder="Email" 
                    />
-               </div>
-               <div>
-                   <label>
-                   Password <sup>*</sup>
-                   </label>
                    <input 
+                   className={styles.input}
                    name="password"
                    type="password"
                    placeholder="Password" 
                    />
-               </div>
-               <button type="submit">Submit</button>
-           </fieldset>
+                    <input 
+                   className={styles.input}
+                   name="passwordConfirm"
+                   type="passwordConfirm"
+                   placeholder="Re-enter password" 
+                   />
+               <button className={styles.button} type="submit">Register</button>
        </form>
    )
 }
