@@ -6,18 +6,18 @@ import styles from './form.module.css'
 import { useForm } from "react-hook-form"
 import type { FormData } from "../../types/types"
 import FormField from "../../components/FormField/FormField"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { AuthFormSchema } from "../../types/FormSchema"
 
 const Form = () => {
-    const { register, handleSubmit, formState: { errors }, setError, } = useForm<FormData>()
+    const { register, handleSubmit, formState: { errors }, } = useForm<FormData>({resolver: zodResolver(AuthFormSchema)})
     const [loading, setLoading] = React.useState(false);
     const router = useRouter()
      const onSubmit = async(data: FormData) => {
         setLoading(true);
         const responce = await signIn('credentials', {
-            name: data.name,
             email: data.email,
             password: data.password,
-            confirmPassword: data.confirmPassword,
             redirect: false
         })
         console.log({responce})

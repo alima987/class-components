@@ -16,8 +16,10 @@ const authOptions: AuthOptions = {
     providers: [
         CredentialsProvider({
             credentials: {
+                name: {},
                 email: {},
-                password: {}
+                password: {},
+                confirmPassword: {},
             },
             async authorize(credentials) {
              const responce = await sql `
@@ -33,6 +35,7 @@ const authOptions: AuthOptions = {
             if (passwordCorrect) {
                 return {
                     id: user.id,
+                    name: user.name,
                     email: user.email
                 }
             }

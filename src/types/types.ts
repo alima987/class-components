@@ -6,6 +6,10 @@ export type FormData = {
     password: string;
     confirmPassword: string
 }
+export type AuthFormData = {
+    email: string;
+    password: string;
+  };
 export type FormFieldProps = {
     type: string;
     placeholder: string;

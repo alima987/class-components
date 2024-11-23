@@ -2,26 +2,47 @@
 import React from "react"
 import styles from './form.module.css'
 import { useForm } from "react-hook-form"
-import type { FormData } from "../../types/types"
+import type { FormData, ValidFieldNames } from "../../types/types"
 import FormField from "../../components/FormField/FormField"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { RegisterFormSchema } from "../../types/FormSchema"
 
 const Form = () => {
-    const { register, handleSubmit, formState: { errors }, setError, } = useForm<FormData>()
+    const { register, handleSubmit, formState: { errors }, setError, } = useForm<FormData>({resolver: zodResolver(RegisterFormSchema)})
     const onSubmit = async(data: FormData) => {
-        const responce = await fetch('/api/auth/register', {
-           method: 'POST',
-           headers: {
-            'Content-Type': 'application/json'
-           },
-           body: JSON.stringify({
-               name: data.name,
-               email: data.email,
-               password: data.password,
-               confirmPassword: data.confirmPassword
-           })
-        })
-        console.log(await responce.json())
-       }
+        try{
+        const response = await fetch('/api/auth/register', {
+            method: 'POST',
+            headers: {
+             'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: data.name,
+                email: data.email,
+                password: data.password,
+                confirmPassword: data.confirmPassword
+            })
+         })
+        const result = await response.json();
+        console.log(result);
+        const { errors = {} } = result; 
+        const fieldErrorMapping: Record<string, ValidFieldNames> = {
+            name: 'name',
+            email: "email",
+            password: "password",
+            confirmPassword: "confirmPassword",
+          };
+        const fieldError = Object.keys(fieldErrorMapping).find((field) => errors[field])
+        if (fieldError) {
+            setError(fieldErrorMapping[fieldError], {
+              type: "server",
+              message: errors[fieldError],
+            });
+       } 
+    } catch (error) {
+        alert("Submitting form failed!");
+      }
+    }
    
    return (
        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
