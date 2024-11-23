@@ -2,19 +2,22 @@
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import React from "react"
-import { FormEvent } from "react"
 import styles from './form.module.css'
+import { useForm } from "react-hook-form"
+import type { FormData } from "../../types/types"
+import FormField from "../../components/FormField/FormField"
 
 const Form = () => {
+    const { register, handleSubmit, formState: { errors }, setError, } = useForm<FormData>()
     const [loading, setLoading] = React.useState(false);
     const router = useRouter()
-     const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+     const onSubmit = async(data: FormData) => {
         setLoading(true);
-        const formData = new FormData(e.currentTarget)
         const responce = await signIn('credentials', {
-            email: formData.get('email'),
-            password: formData.get('password'),
+            name: data.name,
+            email: data.email,
+            password: data.password,
+            confirmPassword: data.confirmPassword,
             redirect: false
         })
         console.log({responce})
@@ -33,20 +36,22 @@ const Form = () => {
    
    return (
     <div className={styles.formContainer}>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
     <h2 className={styles.formTitle}>Sign in</h2>
-        <input 
-        className={styles.inputField}
-        name="email"
-        type="email"
-        placeholder="Email" 
+        <FormField 
+         name="email"
+         type="email"
+         placeholder="Email" 
+         register={register}
+         error={errors.email}
         />
-        <input 
-        className={styles.inputField}
-        name="password"
-        type="password"
-        placeholder="Password" 
-        />
+       <FormField 
+         name="password"
+         type="password"
+         placeholder="Password" 
+         register={register}
+         error={errors.password}
+       />
     <button 
     className={styles.submitButton} 
     type="submit" 
