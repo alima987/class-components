@@ -6,6 +6,8 @@ import type { FormData, ValidFieldNames } from "../../types/types"
 import FormField from "../../components/FormField/FormField"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterFormSchema } from "../../types/FormSchema"
+import Link from "next/link"
+import { signIn } from "next-auth/react"
 
 const Form = () => {
     const { register, handleSubmit, formState: { errors }, setError, } = useForm<FormData>({resolver: zodResolver(RegisterFormSchema)})
@@ -24,6 +26,15 @@ const Form = () => {
             })
          })
         const result = await response.json();
+        if(result) {
+            await signIn('credentials', {
+              name:data.name,
+              email: data.email,
+              password: data.password,
+              redirect: true,
+              callbackUrl: "/",
+            })
+        }
         console.log(result);
         const { errors = {} } = result; 
         const fieldErrorMapping: Record<string, ValidFieldNames> = {
@@ -45,6 +56,7 @@ const Form = () => {
     }
    
    return (
+    <div>
        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                <h2 className={styles.formTitle}>Create account</h2>
                   <FormField
@@ -77,6 +89,11 @@ const Form = () => {
                    />
                <button className={styles.button} type="submit">Register</button>
        </form>
+       <div>
+        <p>Already have an account?</p>
+        <Link href='/login'>Sign In</Link>
+       </div>
+    </div>
    )
 }
 export default Form

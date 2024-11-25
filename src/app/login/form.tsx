@@ -12,6 +12,7 @@ import { AuthFormSchema } from "../../types/FormSchema"
 const Form = () => {
     const { register, handleSubmit, formState: { errors }, } = useForm<FormData>({resolver: zodResolver(AuthFormSchema)})
     const [loading, setLoading] = React.useState(false);
+    const [errorMessage, setErrorMessage] = React.useState<string | null>(null)
     const router = useRouter()
      const onSubmit = async(data: FormData) => {
         setLoading(true);
@@ -25,6 +26,8 @@ const Form = () => {
         if(!responce?.error) {
             router.push('/')
             router.refresh()
+        } else {
+          setErrorMessage('Incorrect username or password.')
         }
        }
        const handleProviderSignIn = (provider: string) => {
@@ -52,6 +55,7 @@ const Form = () => {
          register={register}
          error={errors.password}
        />
+       {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
     <button 
     className={styles.submitButton} 
     type="submit" 

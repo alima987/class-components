@@ -96,4 +96,8 @@
   .redirectButton:hover {
     color: #005bb5;
   }
-  
+  .errorMessage {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+}
