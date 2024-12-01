@@ -6,6 +6,7 @@ import Search from "../Search/Search";
 import styles from './header.module.css';
 import React from "react";
 import NavMenu from "../NavMenu/NavMenu";
+import Languages from "../Languages/Languages";
 
 const Header = () => {
     const pathname = usePathname();
@@ -34,6 +35,7 @@ const Header = () => {
                     <p className={pathname === '/tv' ? styles.active : styles.header_tvs}>TV Shows</p>
                 </Link>
             </div>
+            <Languages/>
             <button className={styles.burger_menu} onClick={toggleMenu}>
                 {isMenuOpen ? '✖' : '☰'}
             </button>

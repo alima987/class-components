@@ -5,7 +5,9 @@ export const movieApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.themoviedb.org/3/' }),
   endpoints: (builder) => ({
     fetchNowPlaying: builder.query({
-      query: () => 'movie/now_playing?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=1',
+      query: (language: string) => {
+        return `movie/now_playing?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5&language=${language}&page=1`;
+      },
     }),
     fetchTopRated: builder.query({
       query: () => `movie/top_rated?sort_by=popularity.desc&api_key=51ca1e241e720d72e2bb92a4b36859f5&page=1`
