@@ -5,7 +5,7 @@ export const searchApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.themoviedb.org/3/' }),
   endpoints: (builder) => ({
     fetchSearch: builder.query({
-      query: ({searchText, page}: {searchText: string, page: number}) => `search/multi?api_key=51ca1e241e720d72e2bb92a4b36859f5&language=en-US&query=${searchText}&page=${page}&include_adult=false`,
+      query: ({searchText, page, language}: {searchText: string, page: number, language: string}) => `search/multi?api_key=51ca1e241e720d72e2bb92a4b36859f5&language=en-US&query=${searchText}&language=${language}&page=${page}&include_adult=false`,
     }),
   }),
 });

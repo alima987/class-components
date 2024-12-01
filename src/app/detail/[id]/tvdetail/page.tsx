@@ -1,15 +1,40 @@
+'use client'
 import {TVDetailData } from "../../../../utils/interfaces";
 import Link from 'next/link'
 import styles from '../detail.module.css'
 import { RxStarFilled } from "react-icons/rx";
 import noPhoto from '../../../../../public/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'
 import { getCastTVDetail, getReviewTVDetail, getTVDetail, TVDetailProps } from "../../../../utils/tvDetailApis";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../redux/store";
+import { useEffect } from "react";
+import { setTvCastDetail, setTvDetail, setTvReviewDetail } from "../../../../redux/slices/tvDetailSlice";
 
-const TVDetail = async ({ params }:TVDetailProps) => {
+const TVDetail = ({ params }:TVDetailProps) => {
+    const dispatch = useDispatch();
     const { id } = params
-    const tv = await getTVDetail(id);
-    const cast = await getCastTVDetail(id);
-    const review = await getReviewTVDetail(id)
+    const language = useSelector((state: RootState) => state.language.language);
+    const tv = useSelector((state: RootState) => state.tvDetail.tv);
+    const cast = useSelector((state: RootState) => state.tvDetail.cast);
+    const review = useSelector((state: RootState) => state.tvDetail.review);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const tvData = await getTVDetail(id, language);
+        const castData = await getCastTVDetail(id, language);
+        const reviewData = await getReviewTVDetail(id, language)
+        console.log(castData); 
+        dispatch(setTvDetail(tvData));
+        dispatch(setTvCastDetail(castData.cast));
+        dispatch(setTvReviewDetail(reviewData.results));
+      };
+  
+      fetchData();
+    }, [id, language, dispatch]);
+
+  if (!tv || !cast || !review) {
+    return <div>Loading...</div>;
+  }
 return (
     <section className={styles.movie_detail_Container}>
        <p className={styles.movie_detail_title}>{tv.name}</p>
@@ -52,7 +77,7 @@ return (
       </div>
       <div className={styles.movie_cast}>
       <div className={styles.movie_cast_list}>
-        {cast?.cast?.slice(0, 6).map((el:TVDetailData, index: number) => (
+        {cast.slice(0, 6).map((el:TVDetailData, index: number) => (
             <div key={`${el.id}-${index}`}>
                 <img 
                   src={el.profile_path ? `https://image.tmdb.org/t/p/w500${el.profile_path}` : noPhoto.src} 
@@ -62,11 +87,11 @@ return (
                 <p className={styles.movie_cast_character}>{el.character}</p>
             </div>
         ))}</div>
-    <Link href={`/detail/${id}/tvdetail/tvcast`} className={styles.link_cast}>{cast.cast.length} actors</Link>
+    <Link href={`/detail/${id}/tvdetail/tvcast`} className={styles.link_cast}>{cast.length} actors</Link>
       </div>
       <div className={styles.movie_review}>
       <div className={styles.movie_review_list}>
-        {review.results.slice(0, 3).map((el:TVDetailData) => (
+        {review.slice(0, 3).map((el:TVDetailData) => (
             <div key={el.id}>
                 <p className={styles.movie_review_author}>{el.author}</p>
                 <p className={styles.movie_review_year}>{el.created_at ? el.created_at.slice(0, 10) : 'Year not available'}</p>
@@ -75,7 +100,7 @@ return (
             </div>
         ))}
         </div>
-        <Link href={`/detail/${id}/tvdetail/tvreview`} className={styles.link_review}>{review.results.length} reviews</Link>
+        <Link href={`/detail/${id}/tvdetail/tvreview`} className={styles.link_review}>{review.length} reviews</Link>
       </div>
     </section>
 )

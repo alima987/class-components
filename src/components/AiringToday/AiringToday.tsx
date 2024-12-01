@@ -10,10 +10,11 @@ import MediaList from "../MediaList/MediaList";
 import Slider from "../Slider/Slider";
 
 const AiringToday = () => {
+const language = useSelector((state: RootState) => state.language.language);
 const tvs = useSelector((state: RootState) => state.tvs.AiringToday); 
 const isLoading = useSelector((state: RootState) => state.loading.isLoading)
 const dispatch = useDispatch()
-const { data, error, isLoading: queryIsLoading } = useFetchAiringTodayQuery({})
+const { data, error, isLoading: queryIsLoading } = useFetchAiringTodayQuery(language)
 
 
 useEffect(() => {

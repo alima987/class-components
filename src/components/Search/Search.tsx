@@ -1,16 +1,18 @@
 "use client"
 import { useEffect, useState } from "react";
 import { useFetchSearchQuery } from "../../services/searchApi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSearch } from "../../redux/slices/searchSlice";
 import Link from 'next/link'
 import { RiSearchLine } from "react-icons/ri";
 import styles from './search.module.css'
+import { RootState } from "../../redux/store";
 
  const Search = () => {
+    const language = useSelector((state: RootState) => state.language.language);
     const [value, setValue] = useState('')
     const [page] = useState<number>(1)
-    const { data, error, isLoading } = useFetchSearchQuery({searchText: value, page})
+    const { data, error, isLoading } = useFetchSearchQuery({searchText: value, page, language})
     const dispatch = useDispatch()
     useEffect(() => {
             if(data) {

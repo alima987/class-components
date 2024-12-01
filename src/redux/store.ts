@@ -9,6 +9,8 @@ import LoadingReducer from "./slices/lodingSlice";
 import { searchApi } from "../services/searchApi";
 import SearchReducer from './slices/searchSlice';
 import LanguageReducer from './slices/languageSlice';
+import movieDetailReducer from './slices/movieDetailSlice';
+import tvDetailReducer from './slices/tvDetailSlice';
 
 export const store = configureStore({
     reducer: {
@@ -21,7 +23,9 @@ export const store = configureStore({
       tvs: TVReducer,
       loading: LoadingReducer,
       search: SearchReducer,
-      language: LanguageReducer
+      language: LanguageReducer,
+      movieDetail: movieDetailReducer,
+      tvDetail: tvDetailReducer
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(movieApi.middleware, tvApi.middleware, genreApi.middleware, searchApi.middleware)
