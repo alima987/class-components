@@ -1,6 +1,5 @@
 {
-    "nowPlaying": "Now Playing",
-    "topRated": "Top Rated",
-    "airingToday": "Airing Today",
-    "topRatedTv": "Top Rated TV"
+    "home": "Home",
+    "movies": "Movies",
+    "tvShows": "TV Shows"
   }

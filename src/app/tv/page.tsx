@@ -1,4 +1,5 @@
 "use client"
+import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
@@ -14,10 +15,11 @@ import { LiaStarSolid } from "react-icons/lia";
 const TVShows = () => {
     const [activeTVGenre, setActiveTVGenre] = useState(10759)
     const [page, setPage] = useState(1)
+    const language = useSelector((state: RootState) => state.language.language);
     const tvs = useSelector((state: RootState) => state.tvs.tvs);  
     const isLoading = useSelector((state: RootState) => state.loading.isLoading)
     const dispatch = useDispatch()
-    const { data, error, isLoading: queryIsLoading } = useFetchTVShowsQuery({tvGenreId: activeTVGenre, page})
+    const { data, error, isLoading: queryIsLoading } = useFetchTVShowsQuery({tvGenreId: activeTVGenre, page, language})
 
     useEffect(() => {
         dispatch(setLoading(queryIsLoading))
