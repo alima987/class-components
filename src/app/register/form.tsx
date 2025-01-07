@@ -88,11 +88,11 @@ const Form = () => {
                    error={errors.confirmPassword}
                    />
                <button className={styles.button} type="submit">Register</button>
+               <div>
+                 <p className={styles.text}>Already have an account?</p>
+                 <Link href='/login'>Sign In</Link>
+               </div>
        </form>
-       <div>
-        <p>Already have an account?</p>
-        <Link href='/login'>Sign In</Link>
-       </div>
     </div>
    )
 }
