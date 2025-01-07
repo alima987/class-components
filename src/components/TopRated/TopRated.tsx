@@ -10,10 +10,11 @@ import Slider from '../Slider/Slider';
 import MediaList from "../MediaList/MediaList";
 
 const TopRated = () => {
+  const language = useSelector((state: RootState) => state.language.language);
   const movies = useSelector((state: RootState) => state.movies.topRated); 
   const isLoading = useSelector((state: RootState) => state.loading.isLoading);
   const dispatch = useDispatch();
-  const { data, error, isLoading: queryIsLoading } = useFetchTopRatedQuery({});
+  const { data, error, isLoading: queryIsLoading } = useFetchTopRatedQuery(language);
 
   useEffect(() => {
     dispatch(setLoading(queryIsLoading));

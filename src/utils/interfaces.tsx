@@ -1,7 +1,7 @@
 export interface DetailData {
     id: number,
     backdrop_path: string,
-    budget: number,
+    budget: string,
     genres: { id: number, name: string }[],
     origin_country: string[],
     release_date: string,

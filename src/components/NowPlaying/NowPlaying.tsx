@@ -1,4 +1,5 @@
 "use client"
+import React from "react"
 import { useEffect } from "react"
 import styles from './NowPlaying.module.css'
 import { useDispatch, useSelector } from "react-redux"
@@ -11,13 +12,12 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Link from "next/link"
 
-
-
 const NowPlaying = () => {
+const language = useSelector((state: RootState) => state.language.language);
 const movies = useSelector((state: RootState) => state.movies.nowPlaying); 
 const isLoading = useSelector((state: RootState) => state.loading.isLoading)
 const dispatch = useDispatch()
-const { data, error, isLoading: queryIsLoading } = useFetchNowPlayingQuery({});
+const { data, error, isLoading: queryIsLoading } = useFetchNowPlayingQuery(language);
     
 useEffect(() => {
     dispatch(setLoading(queryIsLoading))

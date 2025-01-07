@@ -1,15 +1,40 @@
+'use client'
 import { DetailData } from "../../../utils/interfaces";
 import Link from 'next/link'
 import styles from './detail.module.css'
 import { RxStarFilled } from "react-icons/rx";
 import noPhoto from '../../../../public/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'
 import { DetailProps, getCastDetail, getMovieDetail, getReviewDetail } from "../../../utils/movieDetailApis";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { useEffect } from "react";
+import { setMovieDetail,setCastDetail, setReviewDetail} from "../../../redux/slices/movieDetailSlice";
 
-const DetailPage = async ({ params }: DetailProps) => {
+const DetailPage = ({params }:  DetailProps) => {
+    const dispatch = useDispatch();
     const { id } = params
-    const movie = await getMovieDetail(id);
-    const cast = await getCastDetail(id)
-    const review = await getReviewDetail(id)
+    const language = useSelector((state: RootState) => state.language.language);
+    const movie = useSelector((state: RootState) => state.movieDetail.movie);
+    const cast = useSelector((state: RootState) => state.movieDetail.cast);
+    const review = useSelector((state: RootState) => state.movieDetail.review);
+  
+    useEffect(() => {
+        const fetchData = async () => {
+          const movieData = await getMovieDetail(id, language);
+          const castData = await getCastDetail(id, language);
+          const reviewData = await getReviewDetail(id, language);
+          console.log(castData); 
+          dispatch(setMovieDetail(movieData));
+          dispatch(setCastDetail(castData.cast));
+          dispatch(setReviewDetail(reviewData.results));
+        };
+    
+        fetchData();
+      }, [id, language, dispatch]);
+  
+    if (!movie || !cast || !review) {
+      return <div>Loading...</div>;
+    }
 
     return (
         <section className={styles.movie_detail_Container}>
@@ -52,18 +77,18 @@ const DetailPage = async ({ params }: DetailProps) => {
 </div>
             </div>
             <div className={styles.movie_cast}>
-                <div className={styles.movie_cast_list}>{cast?.cast?.slice(0, 6).map((el: DetailData, index: number) => (
+                <div className={styles.movie_cast_list}>{cast.slice(0, 6).map((el: DetailData, index: number) => (
                     <div key={`${el.id}-${index}`}>
                         <img src={el.profile_path ? `https://image.tmdb.org/t/p/w500${el.profile_path}` : noPhoto.src} />
                         <p className={styles.movie_cast_name}>{el.name}</p>
                         <p className={styles.movie_cast_character}>{el.character}</p>
                     </div>
                 ))}</div>
-                <Link href={`/detail/${id}/cast`} className={styles.link_cast}>{cast.cast.length} actors</Link>
+                <Link href={`/detail/${id}/cast`} className={styles.link_cast}>{cast.length} actors</Link>
             </div>
             <div className={styles.movie_review}>
                 <div className={styles.movie_review_list}>
-                    {review.results.slice(0, 3).map((el: DetailData) => (
+                    {review.slice(0, 3).map((el: DetailData) => (
                         <div key={el.id}>
                             <p className={styles.movie_review_author}>{el.author}</p>
                             <p className={styles.movie_review_year}>{el.created_at ? el.created_at.slice(0, 10) : 'Year not available'}</p>
@@ -72,11 +97,12 @@ const DetailPage = async ({ params }: DetailProps) => {
                         </div>
                     ))}
                 </div>
-                <Link href={`/detail/${id}/review`} className={styles.link_review}>{review.results.length} reviews</Link>
+                <Link href={`/detail/${id}/review`} className={styles.link_review}>{review.length} reviews</Link>
             </div>
         </section>
     );
 };
+
 export default DetailPage;
 
 

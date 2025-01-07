@@ -4,11 +4,17 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Search from "../Search/Search";
 import styles from './header.module.css';
+import React from "react";
+import NavMenu from "../NavMenu/NavMenu";
+import Languages from "../Languages/Languages";
 
 const Header = () => {
     const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+    
+    if (pathname === '/register') {
+        return null
+    }
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
@@ -17,6 +23,7 @@ const Header = () => {
     };
     return (
         <div className={styles.header}>
+            <NavMenu />
             <div className={styles.header_menu}>
                 <Link href="/">
                     <p className={pathname === '/' ? styles.active : styles.header_home}>Home</p>
@@ -28,6 +35,7 @@ const Header = () => {
                     <p className={pathname === '/tv' ? styles.active : styles.header_tvs}>TV Shows</p>
                 </Link>
             </div>
+            <Languages/>
             <button className={styles.burger_menu} onClick={toggleMenu}>
                 {isMenuOpen ? '✖' : '☰'}
             </button>

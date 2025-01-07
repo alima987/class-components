@@ -10,10 +10,11 @@ interface Props {
     activeGenre: number
 }
 const Genres = ({ setActiveGenre, activeGenre }: Props) => {
+    const language = useSelector((state: RootState) => state.language.language);
     const genres = useSelector((state: RootState) => state.genres.movieGenre);
     const isLoading = useSelector((state: RootState) => state.loading.isLoading)
     const dispatch = useDispatch()
-    const { data, error, isLoading: queryIsLoading } = useFetchMovieGenreQuery({})
+    const { data, error, isLoading: queryIsLoading } = useFetchMovieGenreQuery(language)
     
     useEffect(() => {
         dispatch(setLoading(queryIsLoading))

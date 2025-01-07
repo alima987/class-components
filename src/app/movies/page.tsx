@@ -1,4 +1,5 @@
 "use client"
+import React from "react";
 import { useEffect, useState } from "react"
 import { setPopular } from "../../redux/slices/movieSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,10 +15,11 @@ import { LiaStarSolid } from "react-icons/lia";
 const Movies = () => {
     const [activeGenre, setActiveGenre] = useState(28)
     const [page, setPage] = useState(1)
+    const language = useSelector((state: RootState) => state.language.language);
     const movies = useSelector((state: RootState) => state.movies.popular);  
     const isLoading = useSelector((state: RootState) => state.loading.isLoading)
     const dispatch = useDispatch()
-    const { data, error, isLoading: queryIsLoading } = useFetchPopularQuery({genreId: activeGenre, page})
+    const { data, error, isLoading: queryIsLoading } = useFetchPopularQuery({genreId: activeGenre, page, language})
     
     useEffect(() => {
         dispatch(setLoading(queryIsLoading))

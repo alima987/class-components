@@ -1,0 +1,32 @@
+.inputField {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .inputFieldFocused {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  }
+  
+  .inputPlaceholder {
+    color: #888;
+    font-style: italic;
+  }
+  
+  .errorMessage {
+    color: #d9534f;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+  }
+  
+  .inputFieldError {
+    border-color: #d9534f;
+    box-shadow: 0 0 4px rgba(217, 83, 79, 0.5);
+  }
+  
